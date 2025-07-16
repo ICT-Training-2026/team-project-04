@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>勤怠登録画面</title>
+  <link rel="stylesheet" href="template.css"/>
+  <link rel="stylesheet" href="003_attendanceLoginDisplay.css"/>
+</head>
+<body>
+  <header class="main-header">
+    <div class="logo-container">
+      <img src="c:\Users\250450853\Documents\logo.pic\titl_logo.png" width="170" height="50"/>
+    </div>
+    <nav class="nav-links">
+      <a href="#">勤怠登録</a>
+      <a href="#">実績確認・修正</a>
+      <a href="#">ログアウト</a>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <h1></h1>
+  </main>
+
+  <div class="container">
+  <h2 class="title">勤怠登録画面</h2>
+
+  <div class="form-layout">
+    <!-- 左侧：员工信息 -->
+    <div class="employee-info">
+  <div class="info-row">
+    <label>社員番号：</label>
+    <input type="text" name="employeeId" />
+  </div>
+
+  <div class="info-row">
+    <label>社員名：</label>
+    <input type="text" name="employeeName" />
+  </div>
+
+  <div class="info-row">
+    <label>所属名：</label>
+    <input type="text" name="department" />
+  </div>
+
+  <div class="info-row">
+    <label>所属コード：</label>
+    <input type="text" name="departmentCode" />
+  </div>
+</div>
+
+    <!-- 右侧：打卡表单 -->
+    <div class="attendance-form">
+      <div class="form-row">
+        <label>勤務形態：</label>
+        <input type="text" />
+      </div>
+
+      <div class="form-row">
+        <label>出勤日：</label>
+        <input type="date" />
+        <span class="calendar-icon">📅</span>
+      </div>
+
+      <div class="form-row">
+        <label>開始時間：</label>
+        <input type="text" class="time-input" />時
+        <input type="text" class="time-input" />分 ～
+      </div>
+
+      <div class="form-row">
+        <label>終了時間：</label>
+        ～ <input type="text" class="time-input" />時
+        <input type="text" class="time-input" />分
+      </div>
+
+      <div class="form-row">
+        <label>休憩時間：</label>
+        <input type="text" class="short-input" /> h
+      </div>
+    </div>
+  </div>
+
+  <div class="button-row">
+    <button class="back-button">戻る</button>
+    <button class="submit-button">登録</button>
+  </div>
+</div>
+</body>
+</html>

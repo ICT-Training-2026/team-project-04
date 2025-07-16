@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>勤怠実績修正詳細</title>
+  <link rel="stylesheet" href="template.css"/>
+  <link rel="stylesheet" href="006_att_edit_display.css"/>
+</head>
+<body>
+  <header class="main-header">
+    <div class="logo-container">
+      <img src="c:\Users\250450853\Documents\logo.pic\titl_logo.png" width="170" height="50"/>
+    </div>
+    <nav class="nav-links">
+      <a href="#">勤怠登録</a>
+      <a href="#">実績確認・修正</a>
+      <a href="#">ログアウト</a>
+    </nav>
+  </header>
+  <div class="container">
+    <h2 class="title">勤怠実績確認・勤怠修正画面</h2>
+
+    <div class="main-layout">
+      <!-- 左侧：日付リスト -->
+<div class="date-list">
+  <ul>
+    <li>
+      <div class="date-entry">
+        <div class="date-label">7月11日（木）</div>
+        <select class="status-select">
+          <option>未修正</option>
+          <option>修正済</option>
+          <option>休暇</option>
+        </select>
+      </div>
+    </li>
+    <li>
+      <div class="date-entry">
+        <div class="date-label">7月12日（金）</div>
+        <select class="status-select">
+          <option>未修正</option>
+          <option selected>修正済</option>
+          <option>休暇</option>
+        </select>
+      </div>
+    </li>
+    <li>
+      <div class="date-entry">
+        <div class="date-label">7月14日（日）</div>
+        <select class="status-select">
+          <option>未修正</option>
+          <option>修正済</option>
+          <option selected>休暇</option>
+        </select>
+      </div>
+    </li>
+  </ul>
+</div>
+
+
+       <!-- 右侧：勤怠修正 -->
+      <div class="edit-area">
+        <div class="edit-grid">
+          <div class="before-box">
+            <table>
+              <thead>
+                <tr><th colspan="2">変更前</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>勤務形態</td><td></td></tr>
+                <tr><td>開始時間</td><td></td></tr>
+                <tr><td>終了時間</td><td></td></tr>
+                <tr><td>休憩時間</td><td></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="after-box">
+            <div class="form-row">
+              <label>勤務形態：</label>
+              <input type="text">
+            </div>
+            <div class="form-row">
+              <label>開始時間：</label>
+              <input type="text" class="time-input">時
+              <input type="text" class="time-input">分 ～
+            </div>
+            <div class="form-row">
+              <label>終了時間：</label>
+              ～ <input type="text" class="time-input">時
+              <input type="text" class="time-input">分
+            </div>
+            <div class="form-row">
+              <label>休憩時間：</label>
+              <input type="text" class="short-input"> h
+            </div>
+          </div>
+        </div>
+
+        <div class="button-row">
+          <button class="back-button">戻る</button>
+          <button class="submit-button">申請</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
