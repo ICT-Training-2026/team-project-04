@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ファイル出力画面</title>
+  <link rel="stylesheet" href="somu_template.css"/>
+  <link rel="stylesheet" href="009_file.css"/>
+
+</head>
+
+<body>
+  <!-- ここにheaderが入る（外部CSSで既に完成済み） -->
+
+  <div class="container">
+    <h2 class="title">ファイル出力画面</h2>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>社員番号</th>
+            <th>名前</th>
+            <th>所属</th>
+            <th>選択</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>001</td>
+            <td>山田 太郎</td>
+            <td>営業部</td>
+            <td><input type="checkbox" /></td>
+          </tr>
+          <tr>
+            <td>002</td>
+            <td>佐藤 花子</td>
+            <td>開発部</td>
+            <td><input type="checkbox" /></td>
+          </tr>
+          <tr>
+            <td>003</td>
+            <td>鈴木 次郎</td>
+            <td>総務部</td>
+            <td><input type="checkbox" /></td>
+          </tr>
+          <tr>
+            <td>004</td>
+            <td>高橋 和也</td>
+            <td>人事部</td>
+            <td><input type="checkbox" /></td>
+          </tr>
+          <tr>
+            <td>005</td>
+            <td>田中 美咲</td>
+            <td>企画部</td>
+            <td><input type="checkbox" /></td>
+          </tr>
+          <!-- 必要に応じて追加 -->
+        </tbody>
+      </table>
+    </div>
+
+<div class="button-container">
+  <div class="button-column">
+    <button>一括選択</button>
+    <button>戻る</button>
+  </div>
+  <div class="button-column">
+    <button>全解除</button>
+    <button>出力</button>
+  </div>
+</div>
+
+
+  <script>
+    function selectAll() {
+      document.querySelectorAll('tbody input[type="checkbox"]').forEach(cb => cb.checked = true);
+    }
+
+    function clearAll() {
+      document.querySelectorAll('tbody input[type="checkbox"]').forEach(cb => cb.checked = false);
+    }
+
+    function exportFile() {
+      alert("ファイル出力処理を実行します（仮）");
+      // 実際の出力処理をここに書く
+    }
+  </script>
+</body>
+</html>

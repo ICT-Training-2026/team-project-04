@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>勤怠管理画面</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="somu_template.css"/>
+  <link rel="stylesheet" href="008_att_mang.css"/>
+
+</head>
+<body>
+
+    <header class="main-header">
+    <div class="logo-container">
+      <img src="c:\Users\250450853\Documents\logo.pic\titl_logo.png" width="170" height="50"/>
+    </div>
+    <nav class="nav-links">
+      <a href="#">勤怠登録</a>
+      <a href="#">勤怠管理</a>
+      <a href="#">ファイル</a>
+      <a href="#">新規登録</a>
+      <a href="#">申請</a>
+      <a href="#">ログアウト</a>
+    </nav>
+  </header>
+  
+  <div class="container">
+    <h2 class="title">勤怠管理画面</h2>
+    <div class="content">
+      <!-- 左側の検索 -->
+      <div class="search-panel">
+        <div class="input-group">
+          <img src="c:\Users\250450853\Documents\logo.pic\名前.png" alt="名前">
+          <input type="text" placeholder="名前">
+        </div>
+        <div class="input-group">
+          <img src="c:\Users\250450853\Documents\logo.pic\部署名.png" alt="部署名">
+          <input type="text" placeholder="部署名">
+        </div>
+        <button class="search-btn">検索</button>
+      </div>
+
+      <!-- 右側の表 -->
+        <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>社員番号</th>
+              <th>名前</th>
+              <th>部署名</th>
+              <th>勤怠詳細</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>00001</td>
+              <td>福原 楓</td>
+              <td>開発部</td>
+              <td><button class="detail-btn">詳細</button></td>
+            </tr>
+            <!-- 以下はダミー行 -->
+            <tr><td>00002</td><td>升</td><td>営業部</td><td><button class="detail-btn">詳細</button></td></tr> 
+            <tr><td>00003</td><td>大</td><td>人事部</td><td><button class="detail-btn">詳細</button></td></tr> 
+            <tr><td>00004</td><td>松</td><td>総務部</td><td><button class="detail-btn">詳細</button></td></tr> 
+            <tr><td>00005</td><td>冨</td><td>経理部</td><td><button class="detail-btn">詳細</button></td></tr> 
+          </tbody>
+        </table>
+      </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

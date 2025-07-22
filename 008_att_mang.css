@@ -1,0 +1,119 @@
+body {
+  background-color: #eee;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  padding: 40px 20px;
+}
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.content {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: nowrap;
+}
+
+/* 左側検索パネル */
+.search-panel {
+  width: 240px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px #ccc;
+}
+
+.input-group img {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.input-group input {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  width: 100%;
+}
+
+.search-btn {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #555;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px #999;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.search-btn:hover {
+  background-color: #333;
+}
+
+/* 右側テーブル */
+.table-wrapper {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 40px;
+  border: 1px solid #ccc;
+  background-color: white;
+
+  /* 新增这一行让它自动扩展 */
+  flex: 1;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+th, td {
+  padding: 14px 10px;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  min-width: 100px;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+tr:hover {
+  background-color: #f9f9f9;
+}
+
+.detail-btn {
+  background-color: white;
+  border: 1px solid #888;
+  border-radius: 5px;
+  padding: 5px 12px;
+  cursor: pointer;
+}
+
+.detail-btn:hover {
+  background-color: #ddd;
+}
+
