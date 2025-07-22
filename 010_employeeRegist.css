@@ -1,0 +1,171 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #eee;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-bottom: 4px solid #555;
+  padding: 10px 20px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 20px;
+  margin-right: 8px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  border-left: 1px solid #ccc;
+  padding-left: 10px;
+  font-size: 20px;
+}
+
+.nav-links a:first-child {
+  border-left: none;
+  padding-left: 0;
+}
+
+.main-content {
+  padding: 20px;
+  font-size: 32px;
+  color: #666;
+}
+
+.container {
+    flex-grow: 1;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-title {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Form section styling */
+.form-section {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px; /* Adjust maximum width as needed */
+    margin-bottom: 30px;
+    overflow: hidden; /* Ensures border-radius applies to form-header */
+}
+
+.form-header {
+    background-color: #555; /* Dark gray for the header */
+    color: #fff;
+    padding: 15px 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.form-header h3 {
+    margin: 0;
+}
+
+.form-content {
+    padding: 25px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between form groups */
+}
+
+.form-group {
+    display: flex;
+    align-items: center; /* Align label and input/select vertically */
+}
+
+.form-group label {
+    width: 120px; /* Fixed width for labels for alignment */
+    font-weight: bold;
+    color: #444;
+    font-size: 15px;
+    flex-shrink: 0; /* Prevent label from shrinking */
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="email"],
+.form-group select {
+    flex-grow: 1; /* Input/select takes remaining space */
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+    color: #333;
+    outline: none;
+    background-color: #f9f9f9; /* Light background for inputs */
+}
+
+.form-group input::placeholder {
+    color: #aaa;
+}
+
+.form-group select {
+    /* Style the dropdown arrow if needed (more complex CSS) */
+    appearance: none; /* Remove default arrow in some browsers */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13.2-6.5H18.5a17.6%2017.6%200%200%200-13.2%206.5c-3.7%203.7-5.7%208.7-5.7%2013.2%200%204.4%202%209.5%205.7%2013.2l128%20128c3.7%203.7%208.7%205.7%2013.2%205.7s9.5-2%2013.2-5.7l128-128c3.7-3.7%205.7-8.7%205.7-13.2-.1-4.4-2.1-9.5-5.8-13.2z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    padding-right: 30px; /* Make space for custom arrow */
+}
+
+
+/* Button row styling */
+.button-row {
+    display: flex;
+    gap: 80px;
+    margin-top: 20px; /* Space between form and buttons */
+}
+
+.button {
+    padding: 10px 40px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    transition: background-color 0.3s ease;
+    min-width: 120px; /* Ensure buttons have a minimum width */
+}
+
+.back-button {
+    background-color: #555; 
+}
+
+.back-button:hover {
+    background-color: #333;
+}
+
+.register-button {
+    background-color: #555; /* Dark gray, matching form header */
+}
+
+.register-button:hover {
+    background-color: #333;
+}
