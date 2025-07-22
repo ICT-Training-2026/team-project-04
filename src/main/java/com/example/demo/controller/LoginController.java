@@ -77,7 +77,7 @@ public class LoginController {
     @GetMapping("/login")
     public String login(@ModelAttribute LoginForm loginForm) {
     System.out.println("loginメソッドの開始");
-    System.out.println(loginForm.getUserId());
+    System.out.println(loginForm.getEmployee_id());
     System.out.println(loginForm.getPass());
         return "login";
     }
@@ -85,7 +85,7 @@ public class LoginController {
     @PostMapping("/login")
     public String loginPost(@Validated @ModelAttribute LoginForm loginForm, BindingResult result, Model model) {
     System.out.println("loginPostメソッドの開始");
-    System.out.println(loginForm.getUserId());
+    System.out.println(loginForm.getEmployee_id());
     System.out.println(loginForm.getPass());
    
     if (result.hasErrors()) {
@@ -93,13 +93,12 @@ public class LoginController {
     }
 
     // ログイン処理の実行
-        Login login = new Login(loginForm.getUserId(), loginForm.getPass());
-//        boolean resultLogin = loginService.execute(login);
-        boolean resultLogin = true;
+        Login login = new Login(loginForm.getEmployee_id(), loginForm.getPass());
+        boolean resultLogin = loginService.execute(login);
         // ログイン処理の成否によって処理を分岐
         if (resultLogin) { // ログイン成功時
             // Modelにユーザー情報を追加
-            model.addAttribute("userId", loginForm.getUserId());
+            model.addAttribute("employee_id", loginForm.getEmployee_id());
             return "generalMenu";
         } else { // ログイン失敗時
             model.addAttribute("errorMessage", "ユーザーIDまたはパスワードが間違っています。");

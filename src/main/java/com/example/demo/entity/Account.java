@@ -8,9 +8,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Account {
-    private String userId;
+    private String employee_id;
+    private String employee_name;
     private String pass;
-    private String mail;
-    private String name;
-    private int age;
+    private String department_code;
+    private String position_code;
+    private String email;
 }

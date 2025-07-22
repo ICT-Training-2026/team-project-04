@@ -7,11 +7,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Login {
     
-	private String userId;
+	private String employee_id;
     private String pass;
     
-    public Login(String userId, String pass) {
-		this.userId = userId;
+    public Login(String employee_id, String pass) {
+		this.employee_id = employee_id;
 		this.pass = pass;
 	}
 }

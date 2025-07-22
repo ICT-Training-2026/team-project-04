@@ -18,9 +18,9 @@ public class AccountsRepositoryImpl implements AccountsRepository {
 
     @Override
     public Account findByLogin(Login login) {
-        String sql = "SELECT USER_ID, PASS, MAIL, NAME, AGE FROM ACCOUNTS WHERE USER_ID = ? AND PASS = ?";
+        String sql = "SELECT employee_id, employee_name, pass, department_code, position_code, email FROM employee WHERE employee_id = ? AND pass = ?";
 
-        List<Map<String, Object>> list = jdbcTemplate.queryForList(sql, login.getUserId(), login.getPass());
+        List<Map<String, Object>> list = jdbcTemplate.queryForList(sql, login.getEmployee_id(), login.getPass());
 
         if (list.isEmpty()) {
             return null;
@@ -28,11 +28,12 @@ public class AccountsRepositoryImpl implements AccountsRepository {
 
         Map<String, Object> one = list.get(0);
         Account account = new Account();
-        account.setUserId((String) one.get("USER_ID"));
-        account.setPass((String) one.get("PASS"));
-        account.setMail((String) one.get("MAIL"));
-        account.setName((String) one.get("NAME"));
-        account.setAge((int) one.get("AGE"));
+        account.setEmployee_id((String) one.get("employee_id"));
+        account.setPass((String) one.get("pass"));
+        account.setDepartment_code((String) one.get("department_code"));
+        account.setPosition_code((String) one.get("position_code"));
+        account.setEmail((String) one.get("email"));
+
 
         return account;
     }
@@ -42,11 +43,8 @@ public class AccountsRepositoryImpl implements AccountsRepository {
         String sql = "INSERT INTO ACCOUNTS (USER_ID, PASS, MAIL, NAME, AGE) VALUES (?, ?, ?, ?, ?)";
 
         int result = jdbcTemplate.update(sql,
-            account.getUserId(),
-            account.getPass(),
-            account.getMail(),
-            account.getName(),
-            account.getAge());
+            account.getEmployee_id(),
+            account.getPass());
 
         return result == 1;
     }
