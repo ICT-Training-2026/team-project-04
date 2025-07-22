@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>勤怠実績修正詳細</title>
   <link rel="stylesheet" href="template.css"/>
   <link rel="stylesheet" href="006_att_edit_display.css"/>
+
 </head>
 <body>
   <header class="main-header">
@@ -14,97 +15,126 @@
     </div>
     <nav class="nav-links">
       <a href="#">勤怠登録</a>
-      <a href="#">実績確認・修正</a>
+      <a href="#">勤怠管理</a>
+      <a href="#">ファイル</a>
+      <a href="#">新規登録</a>
+      <a href="#">申請</a>
       <a href="#">ログアウト</a>
     </nav>
   </header>
+
+  <h2 style="text-align:center">勤怠実績確認・勤怠修正画面</h2>
   <div class="container">
-    <h2 class="title">勤怠実績確認・勤怠修正画面</h2>
-
-    <div class="main-layout">
-      <!-- 左侧：日付リスト -->
-<div class="date-list">
-  <ul>
-    <li>
-      <div class="date-entry">
-        <div class="date-label">7月11日（木）</div>
-        <select class="status-select">
+    <div class="left-panel">
+      <div class="day-box" data-date="2024-07-11">
+        <div>7月11日（木）</div>
+        <select>
           <option>未修正</option>
           <option>修正済</option>
           <option>休暇</option>
         </select>
       </div>
-    </li>
-    <li>
-      <div class="date-entry">
-        <div class="date-label">7月12日（金）</div>
-        <select class="status-select">
+      <div class="day-box" data-date="2024-07-12">
+        <div>7月12日（金）</div>
+        <select>
           <option>未修正</option>
-          <option selected>修正済</option>
+          <option>修正済</option>
           <option>休暇</option>
         </select>
       </div>
-    </li>
-    <li>
-      <div class="date-entry">
-        <div class="date-label">7月14日（日）</div>
-        <select class="status-select">
+      <div class="day-box" data-date="2024-07-14">
+        <div>7月14日（日）</div>
+        <select>
           <option>未修正</option>
           <option>修正済</option>
-          <option selected>休暇</option>
+          <option>休暇</option>
         </select>
       </div>
-    </li>
-  </ul>
-</div>
+    </div>
 
-
-       <!-- 右侧：勤怠修正 -->
-      <div class="edit-area">
-        <div class="edit-grid">
-          <div class="before-box">
-            <table>
-              <thead>
-                <tr><th colspan="2">変更前</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>勤務形態</td><td></td></tr>
-                <tr><td>開始時間</td><td></td></tr>
-                <tr><td>終了時間</td><td></td></tr>
-                <tr><td>休憩時間</td><td></td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="after-box">
-            <div class="form-row">
-              <label>勤務形態：</label>
-              <input type="text">
-            </div>
-            <div class="form-row">
-              <label>開始時間：</label>
-              <input type="text" class="time-input">時
-              <input type="text" class="time-input">分 ～
-            </div>
-            <div class="form-row">
-              <label>終了時間：</label>
-              ～ <input type="text" class="time-input">時
-              <input type="text" class="time-input">分
-            </div>
-            <div class="form-row">
-              <label>休憩時間：</label>
-              <input type="text" class="short-input"> h
-            </div>
-          </div>
-        </div>
-
-        <div class="button-row">
-          <button class="back-button">戻る</button>
-          <button class="submit-button">申請</button>
-        </div>
+ <div class="attendance-form">
+      <div class="form-row">
+        <label>勤務形態：</label>
+            <select>
+                <option value="">選択してください</option>
+                <option value="出勤">出勤</option>
+                <option value="振出">振出</option>
+                <option value="振休">振休</option>
+                <option value="年休">年休</option>
+                <option value="休日">休日</option>
+                <option value="欠勤">欠勤</option>
+            </select>
       </div>
+
+
+      <div class="form-row">
+        開始時間：<input type="text" id="startHour"> 時 <input type="text" id="startMin"> 分 ～
+      </div>
+      <div class="form-row">
+        終了時間：～ <input type="text" id="endHour"> 時 <input type="text" id="endMin"> 分
+      </div>
+      <div class="form-row">
+        休憩時間：<input type="text" id="breakTime"> h
+      </div>
+      <button>申請</button>
     </div>
   </div>
 
+  <script>
+  
+    const attendanceData = {
+      "2024-07-11": {
+        status: "未修正",
+        type: "通常",
+        startHour: "9",
+        startMin: "00",
+        endHour: "17",
+        endMin: "30",
+        break: "1"
+      },
+      "2024-07-12": {
+        status: "修正済",
+        type: "在宅",
+        startHour: "10",
+        startMin: "00",
+        endHour: "18",
+        endMin: "00",
+        break: "1"
+      },
+      "2024-07-14": {
+        status: "休暇",
+        type: "",
+        startHour: "",
+        startMin: "",
+        endHour: "",
+        endMin: "",
+        break: ""
+      }
+    };
+     
+    const dayBoxes = document.querySelectorAll(".day-box"); 
+  
+    dayBoxes.forEach(box => {
+      box.addEventListener("click", () => {
+        dayBoxes.forEach(b => b.classList.remove("selected"));
+        box.classList.add("selected");
+
+        const date = box.getAttribute("data-date");
+        const data = attendanceData[date];
+        if (!data) return;
+
+        
+
+        document.getElementById("type").value = data.type;
+        document.getElementById("startHour").value = data.startHour;
+        document.getElementById("startMin").value = data.startMin;
+        document.getElementById("endHour").value = data.endHour;
+        document.getElementById("endMin").value = data.endMin;
+        document.getElementById("breakTime").value = data.break;
+
+        box.querySelector("select").value = data.status;
+      });
+    });
+  </script>
 </body>
 </html>
