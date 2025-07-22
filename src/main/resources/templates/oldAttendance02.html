@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>勤怠実績確認修正</title>
+	<link rel="stylesheet" th:href="@{/css/template.css}"/>
+	<link rel="stylesheet" th:href="@{/css/oldAttendance.css}"/>
+</head>
+
+<body>
+	<header class="main-header">
+		<div class="logo-container">
+			<img th:src="@{/picture/title_logo.png}" width="170" height="50" />
+		</div>
+		<nav class="nav-links">
+			<a href="/attendance">勤怠登録</a>
+			<a href="/attendanceEdit">実績確認・修正</a>
+			<a href="/login">ログアウト</a>
+		</nav>
+	</header>
+
+	<div class="container">
+		<h2 class="title">勤怠実績確認・勤怠修正画面</h2>
+
+		<table>
+			<thead>
+				<tr>
+					<th>日時</th>
+					<th>始業時間</th>
+					<th>終業時間</th>
+					<th>実労働時間</th>
+					<th>休憩時間</th>
+					<th>勤務形態</th>
+					<th>修正依頼</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- �?设7�? -->
+				<tr>
+					<td><input type="date" value="�?月�?日"></td>
+					<td><input type="text" value="8:45"></td>
+					<td><input type="text" value="17:30"></td>
+					<td><input type="text" value="7:75"></td>
+					<td><input type="text" value="1:00"></td>
+					<td><input type="text" value="1.通常"></td>
+					<td><a href="/completeCorrection"><button class="submit-button">修正</button></a></td>
+				</tr>
+				<!-- 再复制�?�? -->
+				<tr>
+					<td><input type="date" value="�?月�?日"></td>
+					<td><input type="text" value="8:45"></td>
+					<td><input type="text" value="17:30"></td>
+					<td><input type="text" value="7:75"></td>
+					<td><input type="text" value="1:00"></td>
+					<td><input type="text" value="1.通常"></td>
+					<td><a href="/completeCorrection"><button class="submit-button">修正</button></a></td>
+				</tr>
+
+				<tr>
+					<td><input type="date" value="�?月�?日"></td>
+					<td><input type="text" value="8:45"></td>
+					<td><input type="text" value="17:30"></td>
+					<td><input type="text" value="7:75"></td>
+					<td><input type="text" value="1:00"></td>
+					<td><input type="text" value="1.通常"></td>
+					<td><a href="/completeCorrection"><button class="submit-button">修正</button></a></td>
+				</tr>
+
+				<tr>
+					<td><input type="date" value="�?月�?日"></td>
+					<td><input type="text" value="8:45"></td>
+					<td><input type="text" value="17:30"></td>
+					<td><input type="text" value="7:75"></td>
+					<td><input type="text" value="1:00"></td>
+					<td><input type="text" value="1.通常"></td>
+					<td><a href="/completeCorrection"><button class="submit-button">修正</button></a></td>
+				</tr>
+
+				<tr>
+					<td><input type="date" value="�?月�?日"></td>
+					<td><input type="text" value="8:45"></td>
+					<td><input type="text" value="17:30"></td>
+					<td><input type="text" value="7:75"></td>
+					<td><input type="text" value="1:00"></td>
+					<td><input type="text" value="1.通常"></td>
+					<td><a href="/completeCorrection"><button class="submit-button">修正</button></a></td>
+				</tr>
+
+				<tr>
+					<td><input type="date" value="�?月�?日"></td>
+					<td><input type="text" value="8:45"></td>
+					<td><input type="text" value="17:30"></td>
+					<td><input type="text" value="7:75"></td>
+					<td><input type="text" value="1:00"></td>
+					<td><input type="text" value="1.通常"></td>
+					<td><a href="/completeCorrection"><button class="submit-button">修正</button></a></td>
+				</tr>
+
+				<tr>
+					<td><input type="date" value="�?月�?日"></td>
+					<td><input type="text" value="8:45"></td>
+					<td><input type="text" value="17:30"></td>
+					<td><input type="text" value="7:75"></td>
+					<td><input type="text" value="1:00"></td>
+					<td><input type="text" value="1.通常"></td>
+					<td><a href="/completeCorrection"><button class="submit-button">修正</button></a></td>
+				</tr>
+				<!-- ?可以继续复制更多 -->
+			</tbody>
+		</table>
+
+		<a href="/generalMenu"><button class="back-button">戻る</button></a>
+		
+	</div>
+
+</body>
+
+</html>
