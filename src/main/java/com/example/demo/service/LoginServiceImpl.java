@@ -21,4 +21,10 @@ public class LoginServiceImpl implements LoginService{
         Account account = accountsRepository.findByLogin(login);
         return account != null;
     }
+    
+    @Override
+    public Account judgeDepartment(Login login) {
+    	Account account = accountsRepository.findByLogin(login);
+        return account;
+    }
 }

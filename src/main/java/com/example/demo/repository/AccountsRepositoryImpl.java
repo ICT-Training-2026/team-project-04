@@ -40,11 +40,15 @@ public class AccountsRepositoryImpl implements AccountsRepository {
 
     @Override
     public boolean createBySignUp(Account account) {
-        String sql = "INSERT INTO ACCOUNTS (USER_ID, PASS, MAIL, NAME, AGE) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO ACCOUNTS (employee_id, employee_name, pass, department_code, position_code, email) VALUES (?, ?, ?, ?, ?,?)";
 
         int result = jdbcTemplate.update(sql,
             account.getEmployee_id(),
-            account.getPass());
+            account.getEmployee_name(),
+            account.getPass(),
+            account.getDepartment_code(),
+            account.getPosition_code(),
+            account.getEmail());
 
         return result == 1;
     }

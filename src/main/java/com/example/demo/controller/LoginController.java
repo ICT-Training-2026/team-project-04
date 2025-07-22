@@ -62,6 +62,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.demo.entity.Account;
 import com.example.demo.entity.Login;
 import com.example.demo.form.LoginForm;
 import com.example.demo.service.LoginService;
@@ -95,8 +96,13 @@ public class LoginController {
     // ログイン処理の実行
         Login login = new Login(loginForm.getEmployee_id(), loginForm.getPass());
         boolean resultLogin = loginService.execute(login);
+        Account account = loginService.judgeDepartment(login);
+        System.out.println("部署ID" + account.getDepartment_code());
         // ログイン処理の成否によって処理を分岐
         if (resultLogin) { // ログイン成功時
+        	if(account.getDepartment_code().equals("D001")) {
+        		return "somu_template";
+        	}
             // Modelにユーザー情報を追加
             model.addAttribute("employee_id", loginForm.getEmployee_id());
             return "generalMenu";
