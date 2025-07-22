@@ -1,69 +1,92 @@
+/* 基本重置 */
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
+/* 背景和字体 */
 body {
   background-color: #eee;
   font-family: sans-serif;
-  font-size: 18px;
+  font-size: 16px;
 }
 
+/* 容器 */
 .container {
+  padding: 40px 20px;
   max-width: 1100px;
   margin: 0 auto;
-  padding: 40px 20px;
-  background-color: #eee;
 }
 
+/* 标题样式 */
 .title {
   text-align: center;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: bold;
   margin-bottom: 30px;
 }
 
+/* 表格样式 */
 table {
   width: 100%;
   border-collapse: collapse;
   background-color: white;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  border: 1px solid #ccc;
 }
 
+/* 表头与单元格 */
 th, td {
-  border: 1px solid #ccc;
-  padding: 10px;
+  padding: 14px 10px;
   text-align: center;
+  border-bottom: 1px solid #ccc;
+  min-width: 90px;
 }
 
+/* 表头样式 */
 th {
-  background-color: #f8f8f8;
+  background-color: #f2f2f2;
   font-weight: bold;
 }
 
-input[type="text"] {
-  width: 90%;
-  padding: 5px;
-  font-size: 16px;
-  text-align: center;
+/* 行 hover 效果 */
+tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* 输入框样式 */
+input[type="text"],
+input[type="date"] {
+  padding: 6px 8px;
+  font-size: 14px;
   border: 1px solid #aaa;
   border-radius: 5px;
+  width: 100px;
 }
 
-input[type="checkbox"] {
-  transform: scale(1.3);
+/* 修正按钮 */
+.submit-button {
+  background-color: #555;
+  color: white;
+  font-size: 14px;
+  padding: 6px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
-.button-row {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-top: 30px;
+.submit-button:hover {
+  background-color: #333;
 }
 
-button {
+/* 修正按钮在单元格中垂直居中 */
+td:last-child {
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* 返回按钮样式 */
+.back-button {
   background-color: #555;
   color: white;
   font-size: 16px;
@@ -73,8 +96,10 @@ button {
   box-shadow: 2px 2px 5px #888;
   cursor: pointer;
   transition: background-color 0.2s;
+  margin: 30px auto 0;
+  display: block;
 }
 
-button:hover {
+.back-button:hover {
   background-color: #333;
 }
