@@ -31,10 +31,10 @@
 
 		<div class="form-layout">
 			<!-- 左侧：员工信息 -->
-			<div class="employee-info">
+			<div class="employee-info" th:if="${Account} != null">
 				<div class="info-row">
 					<label>社員番号：</label>
-					<input type="text" name="employeeId" />
+					<th:text="${restaurant.restaurantId}">
 				</div>
 
 				<div class="info-row">
