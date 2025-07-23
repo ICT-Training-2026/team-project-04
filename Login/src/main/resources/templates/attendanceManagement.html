@@ -14,7 +14,7 @@
 
 	<header class="main-header">
 		<div class="logo-container">
-			<img src="c:\Users\250450853\Documents\logo.pic\titl_logo.png" width="170" height="50" />
+			<img th:src="@{/picture/title_logo.png}" width="170" height="50" />
 		</div>
 		<nav class="nav-links">
 			<a href="/attendance">勤怠登録</a>
@@ -32,11 +32,11 @@
 			<!-- 左側の検索 -->
 			<div class="search-panel">
 				<div class="input-group">
-					<img src="c:\Users\250450853\Documents\logo.pic\名前.png" alt="名前">
+					<img th:src="@{/picture/name.png}" alt="名前">
 					<input type="text" placeholder="名前">
 				</div>
 				<div class="input-group">
-					<img src="c:\Users\250450853\Documents\logo.pic\部署名.png" alt="部署名">
+					<img th:src="@{/picture/department.png}" alt="部署名">
 					<input type="text" placeholder="部署名">
 				</div>
 
