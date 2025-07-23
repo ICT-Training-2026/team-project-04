@@ -15,4 +15,10 @@ public class userRegistController {
 	    return "userRegist";
 	}
 	
+	@GetMapping("/userRegistComplete")
+    public String userRegistComplete(@ModelAttribute LoginForm loginForm) {
+	    System.out.println("userRegistCompleteメソッドの開始");
+	    return "userRegistComplete";
+	}
+	
 }

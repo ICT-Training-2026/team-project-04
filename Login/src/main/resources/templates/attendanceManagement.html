@@ -2,11 +2,10 @@
 <html lang="ja">
 
 <head>
-	
 	<meta charset="UTF-8">
-	<title>勤怠管理画面</title>
+	<title>勤怠管理</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" th:href="@{/css/template.css}" />
+	<link rel="stylesheet" th:href="@{/css/template.css}" />-->
 	<link rel="stylesheet" th:href="@{/css/attendanceManagement.css}" />
 
 </head>
@@ -22,8 +21,8 @@
 			<a href="/attendanceManagement">勤怠管理</a>
 			<a href="/fileExport">ファイル</a>
 			<a href="/userRegist">新規登録</a>
-			<a href="#">申請</a>
-			<a href="#">ログアウト</a>
+			<a href="/applicationPermission">申請</a>
+			<a href="/login">ログアウト</a>
 		</nav>
 	</header>
 
@@ -40,8 +39,15 @@
 					<img src="c:\Users\250450853\Documents\logo.pic\部署名.png" alt="部署名">
 					<input type="text" placeholder="部署名">
 				</div>
-				<button class="search-btn">検索</button>
+
+				<!-- ボタン -->
+				<div class="button-row">
+					<a href="/somuMenu"><button class="search-btn">戻る</button></a>
+					<button class="search-btn">検索</button>
+				</div>
 			</div>
+
+
 
 			<!-- 右側の表 -->
 			<div class="table-wrapper">

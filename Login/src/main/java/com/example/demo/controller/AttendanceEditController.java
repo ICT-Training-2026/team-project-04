@@ -20,4 +20,9 @@ public class AttendanceEditController {
 		return "completeCorrection";
 	}
 	
+	@GetMapping("/applicationPermission")
+	private String applicationPermission() {
+		return "applicationPermission";
+	}
+	
 }

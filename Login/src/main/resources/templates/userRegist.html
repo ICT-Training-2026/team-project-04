@@ -4,8 +4,9 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Chronos</title>
+	<title>新規社員登録</title>
 	<link rel="stylesheet" th:href="@{/css/userRegist.css}"/>
+	<link rel="stylesheet" th:href="@{/css/somu_template.css}"/>
 
 </head>
 
@@ -15,12 +16,12 @@
 			<img th:src="@{/picture/title_logo.png}" width="170" height="50" />
 		</div>
 		<nav class="nav-links">
-			<a href="#">勤怠登録</a>
-			<a href="#">勤怠管理</a>
-			<a href="#">ファイル</a>
-			<a href="#">新規登録</a>
-			<a href="#">申請</a>
-			<a href="#">ログアウト</a>
+			<a href="/attendance">勤怠登録</a>
+			<a href="/attendanceManagement">勤怠管理</a>
+			<a href="/fileExport">ファイル</a>
+			<a href="/userRegist">新規登録</a>
+			<a href="/applicationPermission">申請</a>
+			<a href="/login">ログアウト</a>
 		</nav>
 	</header>
 
@@ -70,8 +71,8 @@
 		</div>
 
 		<div class="button-row">
-			<a href="#"><button class="button back-button">戻る</button></a>
-			<a href="#"><button class="button register-button">登録</button></a>
+			<a href="/somuMenu"><button class="button back-button">戻る</button></a>
+			<a href="/userRegistComplete"><button class="button register-button">登録</button></a>
 		</div>
 	</main>
 
