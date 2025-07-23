@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" th:href="@{/css/login.css}">
+	<title>Login</title>
+</head>
+
+<body>
+	<form th:action="@{/login}" th:object="${loginForm}" method="post">
+		<div class="login_form_btm container">
+			<img th:src="@{/picture/title_logo.png}" width="300" height="80">
+			<div th:if="${errorMessage}" th:text="${errorMessage}" style="color: red; font-size: 12px" class="center">
+			</div>
+			<input type="text" th:field="*{employee_id}" id="employee_id" required placeholder="Employee_id"><br>
+			<div th:if="${#fields.hasErrors('employee_id')}" th:errors="*{employee_id}"></div>
+			<input type="password" th:field="*{pass}" id="pass" required placeholder="Password">
+			<div th:if="${#fields.hasErrors('pass')}" th:errors="*{pass}"></div>
+			<button type="submit">ログイン</button>
+		</div>
+	</form>
+</body>
+
+</html>

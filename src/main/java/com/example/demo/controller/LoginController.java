@@ -45,7 +45,7 @@ public class LoginController {
         Login login = new Login(loginForm.getEmployee_id(), loginForm.getPass());
         boolean resultLogin = loginService.execute(login);
         Account account = loginService.judgeDepartment(login);
-        System.out.println("部署ID" + account.getDepartment_code());
+//        System.out.println("部署ID" + account.getDepartment_code());
 
         // ログイン処理の成否によって処理を分岐
         if (resultLogin) { // ログイン成功時
