@@ -70,6 +70,33 @@ body {
   background-color: #333;
 }
 
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.back-btn,
+.search-btn {
+  width: 100px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #555;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px #888;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.back-btn:hover,
+.search-btn:hover {
+  background-color: #333;
+}
+
+
 /* 右側テーブル */
 .table-wrapper {
   max-height: 300px;
