@@ -1,0 +1,10 @@
+★他のコントローラーでemployee_idを取得する方法★
+
+
+import com.example.demo.session.UserSession; // 追加
+↓
+@RequiredArgsConstructor // Lombokを使用してコンストラクタを自動生成
+↓
+private final UserSession userSession; // DIによる注入
+↓
+userSession.getEmployee_id();	//現ユーザーのemployee_idをゲットする！！！！！！！
