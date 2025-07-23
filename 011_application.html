@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chronos</title>
+  <link rel="stylesheet" href="011_application.css"/>
+
+</head>
+<body>
+  <header class="main-header">
+    <div class="logo-container">
+      <img src="c:\Users\250450853\Documents\logo.pic\titl_logo.png" width="170" height="50"/>
+    </div>
+    <nav class="nav-links">
+      <a href="#">勤怠登録</a>
+      <a href="#">勤怠管理</a>
+      <a href="#">ファイル</a>
+      <a href="#">新規登録</a>
+      <a href="#">申請</a>
+      <a href="#">ログアウト</a>
+    </nav>
+  </header>
+
+  <main class="container">
+        <h2 class="page-title">申請許可画面</h2>
+
+        <div class="content-area">
+            <div class="sidebar">
+                <h3>社員名</h3>
+                <ul class="employee-list">
+                    <li class="employee-item active" data-employee-id="emp001">社員名A</li>
+                    <li class="employee-item" data-employee-id="emp002">社員名B</li>
+                    <li class="employee-item" data-employee-id="emp003">社員名C</li>
+                    <li class="employee-item" data-employee-id="emp004">社員名D</li>
+                </ul>
+                <button class="button back-button">戻る</button>
+            </div>
+
+            <div class="main-content">
+                <div class="employee-info">
+                    <span class="label">所属名:</span> <span class="value">部署名X</span>
+                    <span class="label employee-number-label">社員番号:</span> <span class="value employee-number">00000</span>
+                    <span class="label employee-name-label">社員名:</span> <span class="value employee-name">A</span>
+                </div>
+
+                <div class="approval-data active" id="emp001-data">
+                    <div class="data-section">
+                        <h4>変更前:</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>始業時間</th>
+                                    <th>終業時間</th>
+                                    <th>実労働時間</th>
+                                    <th>休憩時間</th>
+                                    <th>勤務形態</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>8:45</td>
+                                    <td>17:30</td>
+                                    <td>7:75</td>
+                                    <td>1:00</td>
+                                    <td>1.通常</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="data-section">
+                        <h4>変更後:</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>始業時間</th>
+                                    <th>終業時間</th>
+                                    <th>実労働時間</th>
+                                    <th>休憩時間</th>
+                                    <th>勤務形態</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>8:45</td>
+                                    <td>17:30</td>
+                                    <td>7:75</td>
+                                    <td>1:00</td>
+                                    <td>1.通常</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="button reject-button">否認</button>
+                        <button class="button approve-button">承認</button>
+                    </div>
+                </div>
+
+                <div class="approval-data" id="emp002-data">
+                     <div class="data-section">
+                        <h4>変更前:</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>始業時間</th>
+                                    <th>終業時間</th>
+                                    <th>実労働時間</th>
+                                    <th>休憩時間</th>
+                                    <th>勤務形態</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>9:00</td>
+                                    <td>18:00</td>
+                                    <td>8:00</td>
+                                    <td>1:00</td>
+                                    <td>2.フレックス</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="data-section">
+                        <h4>変更後:</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>始業時間</th>
+                                    <th>終業時間</th>
+                                    <th>実労働時間</th>
+                                    <th>休憩時間</th>
+                                    <th>勤務形態</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>9:00</td>
+                                    <td>17:00</td>
+                                    <td>7:00</td>
+                                    <td>1:00</td>
+                                    <td>2.フレックス</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="button reject-button">否認</button>
+                        <button class="button approve-button">承認</button>
+                    </div>
+                </div>
+                </div>
+        </div>
+  </main>
+
+  <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const employeeItems = document.querySelectorAll('.employee-item');
+            const employeeNumberSpan = document.querySelector('.employee-number');
+            const employeeNameSpan = document.querySelector('.employee-name');
+            const approvalDataSections = document.querySelectorAll('.approval-data');
+
+            // Initial load: Set active employee info and display corresponding data
+            updateMainContent('emp001'); // Assuming 'emp001' is the initially active employee
+
+            employeeItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Remove 'active' class from all employee items
+                    employeeItems.forEach(el => el.classList.remove('active'));
+                    // Add 'active' class to the clicked item
+                    this.classList.add('active');
+
+                    const employeeId = this.dataset.employeeId;
+                    const employeeName = this.textContent;
+
+                    // Update the employee info bar
+                    employeeNameSpan.textContent = employeeName;
+
+                    // Dummy data for employee number based on ID (replace with actual data fetching)
+                    if (employeeId === 'emp001') {
+                        employeeNumberSpan.textContent = '00000';
+                    } else if (employeeId === 'emp002') {
+                        employeeNumberSpan.textContent = '00001';
+                    } else {
+                        employeeNumberSpan.textContent = 'XXXXX'; // Default or error
+                    }
+
+                    // Update the main content data tables
+                    updateMainContent(employeeId);
+                });
+            });
+
+            function updateMainContent(activeId) {
+                approvalDataSections.forEach(section => {
+                    if (section.id === `${activeId}-data`) {
+                        section.classList.add('active');
+                    } else {
+                        section.classList.remove('active');
+                    }
+                });
+            }
+
+            // Example for the "戻る" (Back) button in the sidebar
+            const backButton = document.querySelector('.sidebar .back-button');
+            if (backButton) {
+                backButton.addEventListener('click', function() {
+                    // Example: Navigate back to a general menu or previous page
+                    window.history.back(); // Or window.location.href = '/generalMenu';
+                });
+            }
+
+            // Example for "否認" (Reject) and "承認" (Approve) buttons
+            // You would typically attach these handlers to buttons within the active .approval-data section
+            // and send data to a server.
+            document.querySelectorAll('.reject-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const employeeId = this.closest('.approval-data').id.replace('-data', '');
+                    alert(`${employeeId} の申請を否認しました。`);
+                    // Add logic to send data to server, update UI, etc.
+                });
+            });
+
+            document.querySelectorAll('.approve-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const employeeId = this.closest('.approval-data').id.replace('-data', '');
+                    alert(`${employeeId} の申請を承認しました。`);
+                    // Add logic to send data to server, update UI, etc.
+                });
+            });
+        });
+  </script>
+</body>
+</html>

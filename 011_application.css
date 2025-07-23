@@ -1,0 +1,239 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #eee;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-bottom: 4px solid #555;
+  padding: 10px 20px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 20px;
+  margin-right: 8px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  border-left: 1px solid #ccc;
+  padding-left: 10px;
+  font-size: 20px;
+}
+
+.nav-links a:first-child {
+  border-left: none;
+  padding-left: 0;
+}
+
+.main-content {
+  padding: 20px;
+  font-size: 32px;
+  color: #666;
+}
+
+/* Main content container */
+.container {
+    flex-grow: 1;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-title {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.content-area {
+    display: flex;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px; /* Adjust as needed */
+    overflow: hidden; /* For rounded corners */
+}
+
+.sidebar {
+    width: 200px; /* Fixed width for sidebar */
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-right: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align contents to the left */
+    gap: 15px; /* Space between elements */
+}
+
+.sidebar h3 {
+    color: #333;
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.employee-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%; /* Take full width of sidebar */
+    flex-grow: 1; /* Pushes back button to bottom */
+}
+
+.employee-item {
+    color: #007bff; /* Blue text for employee names */
+    font-size: 16px;
+    padding: 10px 0;
+    cursor: pointer;
+    border-bottom: 1px dotted #ccc; /* Dotted line separator */
+    transition: background-color 0.2s ease;
+}
+
+.employee-item:last-child {
+    border-bottom: none; /* No border for the last item */
+}
+
+.employee-item:hover {
+    background-color: #e9f5ff; /* Light blue on hover */
+}
+
+.employee-item.active {
+    background-color: #d0e7ff; /* Darker blue for active tab */
+    font-weight: bold;
+    color: #0056b3;
+}
+
+.main-content {
+    flex-grow: 1; /* Takes remaining space */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Space between sections */
+}
+
+.employee-info {
+    background-color: #e0e0e0; /* Gray background for info bar */
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: flex;
+    gap: 20px;
+    font-size: 15px;
+    color: #333;
+    justify-content: flex-start; /* Align items to the start */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.employee-info .label {
+    font-weight: bold;
+}
+
+/* Data sections for before/after changes */
+.data-section {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.data-section h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 16px;
+}
+
+.data-section table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-section th,
+.data-section td {
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.data-section th {
+    background-color: #eef; /* Light blueish background for headers */
+    font-weight: bold;
+    color: #333;
+}
+
+/* Action buttons at the bottom */
+.action-buttons {
+    display: flex;
+    justify-content: center; /* Center buttons horizontally */
+    gap: 60px; /* Space between buttons */
+    margin-top: 20px; /* Space above buttons */
+}
+
+.button {
+    padding: 10px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    transition: background-color 0.3s ease;
+    min-width: 100px; /* Ensure buttons have a minimum width */
+}
+
+.back-button {
+    background-color: #555; /* Gray for sidebar back button */
+    align-self: center; /* Center the back button in sidebar */
+    margin-top: auto; /* Push to bottom of sidebar */
+}
+
+.back-button:hover {
+    background-color: #333;
+}
+
+.reject-button {
+    background-color: #555; /* Red for Reject */
+}
+
+.reject-button:hover {
+    background-color: #333;
+}
+
+.approve-button {
+    background-color: #555; /* Green for Approve */
+}
+
+.approve-button:hover {
+    background-color: #333;
+}
+
+/* JavaScript controlled display */
+.approval-data {
+    display: none; /* Hide all by default */
+}
+
+.approval-data.active {
+    display: flex; /* Show active one */
+    flex-direction: column;
+    gap: 25px;
+}
