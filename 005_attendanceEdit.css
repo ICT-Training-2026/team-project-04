@@ -103,3 +103,14 @@ td:last-child {
 .back-button:hover {
   background-color: #333;
 }
+
+.table-scroll-wrapper {
+  max-height: 400px;     /* 调整这个值控制显示行数 */
+  overflow-y: auto;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: white;
+  box-shadow: 2px 2px 5px #ccc;
+  margin: 0 auto;
+  width: fit-content;
+}
