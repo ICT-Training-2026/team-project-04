@@ -26,16 +26,27 @@ input {
   border-radius: 5px;
 }
 
-button{
- width: 250px;
- padding:3px;
- height: 30px;
- margin-top: 15px;
- background-color: black;
- color: white;
- cursor: pointer;
- border-radius: 15px;
+button {
+  width: 250px;
+  height: 35px;
+  margin-top: 15px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  border-radius: 15px;
+  display: inline-block;  
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
 }
+  button:hover {
+  transform: translateY(-3px); /* 鼠标悬停时微微上移 */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4); /* 更强的阴影 */
+}
+
 .container {
   width:400px;
   border: 2px solid black;
@@ -47,3 +58,5 @@ button{
   box-sizing: border-box;
 
 }
+
+
