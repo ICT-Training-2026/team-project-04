@@ -26,7 +26,21 @@
 		<h1></h1>
 	</main>
 
+
 	<div class="container">
+		
+		
+		//現在ログイン中のユーザー情報
+		<h1 th:text="${currentInfo.employee_id}"></h1>
+
+		<h1 th:text="${currentInfo.employee_name}"></h1>
+		
+		<h1 th:text="${currentInfo.department_code}"></h1>
+		
+		<h1 th:text="${currentInfo.department_name}"></h1>
+		
+		
+		
 		<h2 class="title">勤怠登録画面</h2>
 
 		<div class="form-layout">
