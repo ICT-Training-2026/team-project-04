@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Chronos</title>
+	<link rel="stylesheet" th:href="@{/css/userRegist.css}"/>
+
+</head>
+
+<body>
+	<header class="main-header">
+		<div class="logo-container">
+			<img th:src="@{/picture/title_logo.png}" width="170" height="50" />
+		</div>
+		<nav class="nav-links">
+			<a href="#">勤怠登録</a>
+			<a href="#">勤怠管理</a>
+			<a href="#">ファイル</a>
+			<a href="#">新規登録</a>
+			<a href="#">申請</a>
+			<a href="#">ログアウト</a>
+		</nav>
+	</header>
+
+	<main class="container">
+		<h2 class="page-title">新規ユーザー登録画面</h2>
+
+		<div class="form-section">
+			<div class="form-header">
+				<h3>ユーザー情報入力</h3>
+			</div>
+			<div class="form-content">
+				<div class="form-group">
+					<label for="employeeId">社員番号</label>
+					<input type="text" id="employeeId" placeholder="例) 000000">
+				</div>
+				<div class="form-group">
+					<label for="name">名前</label>
+					<input type="text" id="name" placeholder="例) 東洲斎写楽">
+				</div>
+				<div class="form-group">
+					<label for="password">パスワード</label>
+					<input type="password" id="password" placeholder="例) PassPassWord">
+				</div>
+				<div class="form-group">
+					<label for="departmentCode">部署コード</label>
+					<select id="departmentCode">
+						<option value="">-選択してください-</option>
+						<option value="">営業</option>
+						<option value="">開発</option>
+						<option value="">総務</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="position">職位</label>
+					<select id="position">
+						<option value="">-選択してください-</option>
+						<option value="">一般社員</option>
+						<option value="">課長以上</option>
+						<option value="">総務部社員</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="email">メールアドレス</label>
+					<input type="email" id="email" placeholder="例) example@example.com">
+				</div>
+			</div>
+		</div>
+
+		<div class="button-row">
+			<a href="#"><button class="button back-button">戻る</button></a>
+			<a href="#"><button class="button register-button">登録</button></a>
+		</div>
+	</main>
+
+</body>
+
+</html>
