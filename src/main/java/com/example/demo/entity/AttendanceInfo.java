@@ -17,8 +17,9 @@ public class AttendanceInfo {
     private LocalTime clock_out_time;
     private int rest_minute;
     private int actual_working_minute;
-    private String used_paid_leave_days;
-    private String remaining_paid_leave_days;
+    private int used_paid_leave_days;
+    private int remaining_paid_leave_days;
+
     public AttendanceInfo(
     		String current_id,
     		String workType,
@@ -30,21 +31,47 @@ public class AttendanceInfo {
     		Double breakTime) {
     	this.employee_id = current_id;
 		this.attendance_date = attendanceDate;
-		this.attendance_type_code = workType;
+		
+		switch(workType) {
+	    case "出勤":
+	        this.attendance_type_code = "A001";
+	        break;
+	    case "振出":
+	        this.attendance_type_code = "A002";
+	        break;
+	    case "振休":
+	        this.attendance_type_code = "A003";
+	        break;
+	    case "年休":
+	        this.attendance_type_code = "A004";
+	        break;
+	    case "休日":
+	        this.attendance_type_code = "A005";
+	        break;
+	    case "欠勤":
+	        this.attendance_type_code = "A006";
+	        break;
+		}
+		
 		// 文字列を整数に変換
         int hour = Integer.parseInt(startHour);
         int minute = Integer.parseInt(startMinute);
+        
         // LocalTimeオブジェクトを作成
         this.clock_in_time = LocalTime.of(hour, minute);
         hour = Integer.parseInt(endHour);
         minute = Integer.parseInt(endMinut);
+        
         // LocalTimeオブジェクトを作成
         this.clock_out_time = LocalTime.of(hour, minute);
         this.rest_minute = (int) (breakTime * 60);
+        
 		// 出勤時間と退勤時間の差分を計算
         Duration duration = Duration.between(this.clock_in_time, this.clock_out_time);
-		// 勤怠時間と休憩時間の差分を計算
+		
+        // 勤怠時間と休憩時間の差分を計算
         int workMinute = ((int) duration.toMinutes() - this.rest_minute);
+       
         // 差分を分単位で取得
         if(workMinute < 0) {
         	throw new IllegalArgumentException("workMinute cannot be negative. Received: " + workMinute);

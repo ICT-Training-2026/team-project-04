@@ -31,7 +31,7 @@ public class attendanceController { // クラス名を修正
     	String current_id = userSession.getEmployee_id();	//現ユーザーのemployee_idをゲットする！！！！！！！
     	Attendance account = attendance.findInfo(current_id);
     	model.addAttribute("currentInfo", account);
-        System.out.print(account);
+        System.out.println(account);
         return "attendance";
         
         

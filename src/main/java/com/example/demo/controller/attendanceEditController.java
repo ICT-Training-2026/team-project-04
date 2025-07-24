@@ -12,6 +12,11 @@ public class attendanceEditController {
 	@GetMapping("/attendanceEdit")
     public String attendanceEdit(@ModelAttribute LoginForm loginForm) {
     	System.out.println("勤怠実績画面への遷移が成功");
+    	
+    	
+    	
+    	
+    	
         return "oldAttendance";
     }
 	
