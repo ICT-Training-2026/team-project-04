@@ -1,0 +1,84 @@
+@charset "UTF-8";
+body {
+	background-color: #eee;
+	font-family: sans-serif;
+	font-size: 16px;
+	margin: 0;
+}
+
+.container {
+	max-width: 800px;
+	margin: 40px auto;
+	padding: 20px;
+	text-align: center;
+}
+
+.title {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 30px;
+}
+
+.table-wrapper {
+	max-height: 300px;
+	overflow-y: auto;
+	margin-bottom: 40px;
+	border: 1px solid #ccc;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	background-color: white;
+}
+
+th,
+td {
+	padding: 14px 10px;
+	border-bottom: 1px solid #ccc;
+	text-align: center;
+	min-width: 100px;
+}
+
+th {
+	background-color: #f2f2f2;
+	font-weight: bold;
+}
+
+tr:hover {
+	background-color: #f9f9f9;
+}
+
+.button-container {
+	display: flex;
+	justify-content: center;
+	/* 水平居中，后面 margin-right 决定整体偏右 */
+	margin-top: 40px;
+	margin-right: 0px;
+	/* ✅ 控制整体往右移动程度 */
+	gap: 100px;
+	/* ✅ 控制左右两组之间的距离 */
+}
+
+.button-column {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+button {
+	background-color: #555;
+	color: white;
+	font-size: 16px;
+	border: none;
+	border-radius: 10px;
+	box-shadow: 2px 2px 5px #888;
+	cursor: pointer;
+	transition: background-color 0.2s;
+	width: 100px;
+	height: 50px;
+}
+
+button:hover {
+	background-color: #333;
+}
