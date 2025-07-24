@@ -38,9 +38,27 @@ public class AttendanceRepositoryImpl implements AttendanceRepository {
 
 	@Override
 	public int AttendanceInfo(AttendanceInfo attendanceInfo) {
+		//一番長い実労働時間を取得
+		String sql = "SELECT MAX(actual_working_minute) AS max_actual_working_minute "
+				+ " FROM attendance "
+				+ " WHERE employee_id = ?";
+		int max_act = jdbcTemplate.queryForObject(sql,Integer.class,attendanceInfo.getEmployee_id());
+		max_act += attendanceInfo.getActual_working_minute();
 		
-		String sql = "INSERT INTO attendance(attendance_date, employee_id, attendance_type_code, clock_in_time, clock_out_time, rest_minute, actual_working_minute, used_paid_leave_days, remaining_paid_leave_days) VALUES (?,?,?,?,?,?, (SELECT MAX(actual_working_minute) FROM attendance WHERE employee_id = ?) + TIMESTAMPDIFF(MINUTE, ?, ?)  - ? AS actual_working_minute, (SELECT MAX(used_paid_leave_days) FROM attendance WHERE employee_id = ?) AS used_paid_leave_days,(SELECT MIN(remaining_paid_leave_days) FROM attendance WHERE employee_id = ?) AS remaining_paid_leave_days)";
-    	int result = jdbcTemplate.update(sql,attendanceInfo.getAttendance_date(), attendanceInfo.getEmployee_id(), attendanceInfo.getAttendance_type_code(), attendanceInfo.getClock_in_time(), attendanceInfo.getClock_out_time(), attendanceInfo.getRest_minute() ,attendanceInfo.getEmployee_id(), attendanceInfo.getClock_out_time(),attendanceInfo.getClock_in_time(),attendanceInfo.getRest_minute(),attendanceInfo.getEmployee_id(),attendanceInfo.getEmployee_id());
+		//最も大きい有休取得日数を取得
+		String sql1 = " SELECT MAX(used_paid_leave_days) "
+				+ " FROM attendance "
+				+ " WHERE employee_id = ?;";
+		double paid = jdbcTemplate.queryForObject(sql1,double.class,attendanceInfo.getEmployee_id());
+		
+		//最も小さい有休残り日数を取得
+		String sql2 = "SELECT MAX(used_paid_leave_days) "
+				+ " FROM attendance "
+				+ " WHERE employee_id = ?;";
+		double remai = jdbcTemplate.queryForObject(sql2,double.class,attendanceInfo.getEmployee_id());
+		
+		String sql3 = "INSERT INTO attendance (attendance_date,employee_id,attendance_type_code,clock_in_time,clock_out_time,rest_minute,actual_working_minute,used_paid_leave_days, remaining_paid_leave_days) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		int result = jdbcTemplate.update(sql3,attendanceInfo.getAttendance_date(), attendanceInfo.getEmployee_id(), attendanceInfo.getAttendance_type_code(), attendanceInfo.getClock_in_time(), attendanceInfo.getClock_out_time(), attendanceInfo.getRest_minute(),max_act,paid,remai);
     	if(result > 0){
     	    System.out.println("データが正常に挿入されました。");
     	    return 0;
