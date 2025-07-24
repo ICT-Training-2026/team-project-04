@@ -25,13 +25,11 @@ public class attendanceController { // クラス名を修正
 	@GetMapping("/attendance")
     public String attendance(@ModelAttribute AttendanceForm attendanceForm,Model model) {
     	System.out.println("勤怠登録画面への遷移が成功");
-
         System.out.println(attendanceForm.getWorkType());
 
     	String current_id = userSession.getEmployee_id();	//現ユーザーのemployee_idをゲットする！！！！！！！
     	Attendance account = attendance.findInfo(current_id);
     	model.addAttribute("currentInfo", account);
-        System.out.println(account);
         return "attendance";
         
         
@@ -54,6 +52,8 @@ public class attendanceController { // クラス名を修正
         	if(RIP > 0) {
         		 return "attendance";
         	}else {
+        		model.addAttribute("attendanceDate", attendanceForm.getAttendanceDate());
+        		
         		return "complete";
         	}        	 
         }

@@ -51,7 +51,6 @@ public class AttendanceRepositoryImpl implements AttendanceRepository {
 		
 		String sql3 = "INSERT INTO attendance (attendance_date,employee_id,attendance_type_code,clock_in_time,clock_out_time,rest_minutes,actual_working_minutes,used_paid_leave_days, remaining_paid_leave_days) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-		System.out.println(attendanceInfo.getAttendance_date()+ attendanceInfo.getEmployee_id()+ attendanceInfo.getAttendance_type_code()+ attendanceInfo.getClock_in_time()+ attendanceInfo.getClock_out_time()+ attendanceInfo.getRest_minute()+attendanceInfo.getActual_working_minute()+"aaaaaaaaaaa"+paid+remai);
 	    int result = jdbcTemplate.update(sql3,attendanceInfo.getAttendance_date(), attendanceInfo.getEmployee_id(), attendanceInfo.getAttendance_type_code(), attendanceInfo.getClock_in_time(), attendanceInfo.getClock_out_time(), attendanceInfo.getRest_minute(),attendanceInfo.getActual_working_minute(),paid,remai);
     	
 		if(result > 0){
