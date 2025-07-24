@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>勤怠登録画面</title>
+	<link rel="stylesheet" th:href="@{/css/template.css}"/>
+	<link rel="stylesheet" th:href="@{/css/attendanceDisplay.css}" />
+</head>
+
+<!--Postメソッドを追加して入力した情報をデータベースに登録することができるようにする-->
+<body>
+	<header class="main-header">
+		<div class="logo-container">
+			<img th:src="@{/picture/title_logo.png}" width="170" height="50" />
+		</div>
+		<nav class="nav-links">
+			<a href="/attendance">勤怠登録</a>
+			<a href="/attendanceEdit">実績確認・修正</a>
+			<a href="/login">ログアウト</a>
+		</nav>
+	</header>
+
+	<main class="main-content">
+		<h1></h1>
+	</main>
+
+
+	<div class="container">
+		
+		
+		//現在ログイン中のユーザー情報
+		<h1 th:text="${currentInfo.employee_id}"></h1>
+
+		<h1 th:text="${currentInfo.employee_name}"></h1>
+		
+		<h1 th:text="${currentInfo.department_code}"></h1>
+		
+		<h1 th:text="${currentInfo.department_name}"></h1>
+		
+		
+		
+		<h2 class="title">勤怠登録画面</h2>
+
+		<div class="form-layout">
+			<!-- 左侧：员工信息 -->
+			<div class="employee-info" th:if="${Account} != null">
+				<div class="info-row">
+					<label>社員番号：</label>
+					<th:text="${restaurant.restaurantId}">
+				</div>
+
+				<div class="info-row">
+					<label>社員名：</label>
+					<input type="text" name="employeeName" />
+				</div>
+
+				<div class="info-row">
+					<label>所属名：</label>
+					<input type="text" name="department" />
+				</div>
+
+				<div class="info-row">
+					<label>所属コード：</label>
+					<input type="text" name="departmentCode" />
+				</div>
+			</div>
+
+			<!-- 右侧：打卡表单 -->
+			<div class="attendance-form">
+<!--				<div class="form-row">-->
+<!--					<label>勤務形態：</label>-->
+<!--					<input type="text" />-->
+<!--				</div>-->
+				<div class="form-row">
+			        <label>勤務形態：</label>
+			            <select>
+			                <option value="">選択してください</option>
+			                <option value="出勤">出勤</option>
+			                <option value="振出">振出</option>
+			                <option value="振休">振休</option>
+			                <option value="年休">年休</option>
+			                <option value="休日">休日</option>
+			                <option value="欠勤">欠勤</option>
+			            </select>
+			      </div>
+
+				<div class="form-row">
+					<label>出勤日：</label>
+					<input type="date" />
+					<span class="calendar-icon"></span>
+				</div>
+
+				<div class="form-row">
+					<label>開始時間：</label>
+					<input type="text" class="time-input" />時
+					<input type="text" class="time-input" />分 ～
+				</div>
+
+				<div class="form-row">
+					<label>終了時間：</label>
+					～ <input type="text" class="time-input" />時
+					<input type="text" class="time-input" />分
+				</div>
+
+				<div class="form-row">
+					<label>休憩時間：</label>
+					<input type="text" class="short-input" /> h
+				</div>
+			</div>
+		</div>
+
+		<div class="button-row">
+			<a href="/generalMenu"><button class="back-button">戻る</button></a>
+			<a href="/complete"><button class="submit-button">登録</button></a>
+		</div>
+	</div>
+</body>
+
+</html>
