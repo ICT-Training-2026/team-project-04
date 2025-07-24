@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.entity.Attendance;
+import com.example.demo.entity.AttendanceInfo;
 
 import lombok.RequiredArgsConstructor;
 
@@ -33,7 +34,23 @@ public class AttendanceRepositoryImpl implements AttendanceRepository {
         
         System.out.print(account);
         return account;
-    }
+	}
+
+	@Override
+	public int AttendanceInfo(AttendanceInfo attendanceInfo) {
+		
+		String sql = "INSERT INTO attendance(attendance_date, employee_id, attendance_type_code, clock_in_time, clock_out_time, rest_minute, actual_working_minute, used_paid_leave_days, remaining_paid_leave_days) VALUES (?,?,?,?,?,?, (SELECT MAX(actual_working_minute) FROM attendance WHERE employee_id = ?) + TIMESTAMPDIFF(MINUTE, ?, ?)  - ? AS actual_working_minute, (SELECT MAX(used_paid_leave_days) FROM attendance WHERE employee_id = ?) AS used_paid_leave_days,(SELECT MIN(remaining_paid_leave_days) FROM attendance WHERE employee_id = ?) AS remaining_paid_leave_days)";
+    	int result = jdbcTemplate.update(sql,attendanceInfo.getAttendance_date(), attendanceInfo.getEmployee_id(), attendanceInfo.getAttendance_type_code(), attendanceInfo.getClock_in_time(), attendanceInfo.getClock_out_time(), attendanceInfo.getRest_minute() ,attendanceInfo.getEmployee_id(), attendanceInfo.getClock_out_time(),attendanceInfo.getClock_in_time(),attendanceInfo.getRest_minute(),attendanceInfo.getEmployee_id(),attendanceInfo.getEmployee_id());
+    	if(result > 0){
+    	    System.out.println("データが正常に挿入されました。");
+    	    return 0;
+    	} else {
+    	    System.out.println("データの挿入に失敗しました。");
+    	    return 1;
+    	}
+	}
+
+
 
    
 }

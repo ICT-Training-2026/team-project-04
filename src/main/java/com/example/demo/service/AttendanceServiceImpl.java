@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.Attendance;
+import com.example.demo.entity.AttendanceInfo;
 import com.example.demo.repository.AttendanceRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -20,4 +21,11 @@ public class  AttendanceServiceImpl implements AttendanceService{
     	Attendance account = attendanceRepository.findInfo(current_id);
     	return account;
     }
+
+	@Override
+	public int AttendanceInfo(AttendanceInfo attendanceInfo) {
+		int result = attendanceRepository.AttendanceInfo(attendanceInfo);
+
+		return result;
+	}
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.entity.Attendance;
+import com.example.demo.entity.AttendanceInfo;
 import com.example.demo.form.AttendanceForm;
 import com.example.demo.service.AttendanceService;
 import com.example.demo.session.UserSession; // 追加
@@ -48,7 +49,13 @@ public class attendanceController { // クラス名を修正
             return "attendance"; // エラーがある場合、フォームに戻る
         }
         else {
-        	 return "attendance";
+        	AttendanceInfo att = new AttendanceInfo(userSession.getEmployee_id(),attendanceForm.getWorkType(),attendanceForm.getAttendanceDate(),attendanceForm.getStartHour(),attendanceForm.getStartMinute(),attendanceForm.getEndHour(),attendanceForm.getEndMinute(),attendanceForm.getBreakTime());
+        	int RIP = attendance.AttendanceInfo(att);
+        	if(RIP > 0) {
+        		 return "attendance";
+        	}else {
+        		return "complete";
+        	}        	 
         }
 	}
 	
