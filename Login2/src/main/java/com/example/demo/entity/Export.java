@@ -13,5 +13,5 @@ public class Export {
 	private String employee_name;
 	private String department_name;
 	private Integer actual_working_minutes;
-	private integer zangyo;
+//	private integer zangyo;
 }

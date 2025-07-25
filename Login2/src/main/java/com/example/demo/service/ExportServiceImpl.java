@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entity.Account;
 import com.example.demo.entity.Export;
 import com.example.demo.repository.ExportRepository;
 
@@ -20,7 +19,7 @@ public class  ExportServiceImpl implements ExportService{
     private final ExportRepository exportRepository;
 
 	@Override
-	public List<Account> execute(String userId) {
+	public List<Export> execute(String userId) {
 		List<Export> list = exportRepository.Exinfo(userId);
 		
 		return list;
