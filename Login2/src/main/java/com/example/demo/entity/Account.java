@@ -14,4 +14,5 @@ public class Account {
     private String department_code;
     private String position_code;
     private String email;
+    private String department_name;
 }

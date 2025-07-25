@@ -39,8 +39,10 @@
 			<tbody>
 				<tr th:each="edit : ${attendanceList}">
 					<td th:text="${edit.attendance_date}"></td>
-					<td th:text="${#strings.substringAfter(edit.clock_in_time, 'T')}"></td>
-					<td th:text="${#strings.substringAfter(edit.clock_out_time, 'T')}"></td>
+					<td th:text="${edit.clock_in_time}"></td>
+					<td th:text="${edit.clock_out_time}"></td>
+<!--					<td th:text="${#strings.substringAfter(edit.clock_in_time, 'T')}"></td>-->
+<!--					<td th:text="${#strings.substringAfter(edit.clock_out_time, 'T')}"></td>-->
 					<td th:text="${#numbers.formatInteger(edit.actual_working_minutes / 60, 2)} + ':' + ${#numbers.formatInteger(edit.actual_working_minutes % 60, 2)}"></td>
 					<td th:text="${#numbers.formatInteger(edit.rest_minutes / 60, 2)} + ':' + ${#numbers.formatInteger(edit.rest_minutes % 60, 2)}"></td>
 					<td th:if="${edit.attendance_type_code == 'A001'}">1.通常</td>

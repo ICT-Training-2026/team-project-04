@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.entity.Attendance;
+import com.example.demo.entity.AttendanceInfo;
 import com.example.demo.form.AttendanceForm;
+import com.example.demo.service.AttendanceService;
+import com.example.demo.session.UserSession;
 
 import lombok.RequiredArgsConstructor;
 
@@ -17,50 +20,45 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AttendanceController {
 	
-//	@GetMapping("/attendance")
-//    public String attendance(@ModelAttribute LoginForm loginForm) {
-//    	System.out.println("勤怠登録画面への遷移が成功");
-//        return "attendance";
-//    }
-	
-//	@GetMapping("/attendance")
-//    public String attendance(@ModelAttribute LoginForm loginForm, @RequestParam String departmentID, Model model) {
-//        System.out.println("勤怠登録画面への遷移が成功");
-//        model.addAttribute("departmentID", departmentID); // departmentIDをModelに追加
-//        System.out.println("勤怠登録画面のdepartmentID:" + departmentID);
-//        return "attendance"; // attendance.htmlを返す
-//    }
+	private final UserSession userSession; // DIによる注入
+	private final AttendanceService attendance; // DIによる注入
 	
 	@GetMapping("/attendance")
-	public String attendance(@ModelAttribute("departmentID") String departmentID, Model model) {
+	public String attendance(@Validated @ModelAttribute("departmentID") String departmentID, AttendanceForm attendanceForm, BindingResult result, Model model) {
 	    System.out.println("勤怠登録画面への遷移が成功");
 	    System.out.println("受け取ったdepartmentID: " + departmentID);
 
 	    // 必要であれば model に再セットして画面に渡す
 	    model.addAttribute("departmentID", departmentID);
+	    String current_id = userSession.getEmployee_id();	//現ユーザーのemployee_idをゲットする！！！！！！！
+    	System.out.print(current_id);
+	    Attendance account = attendance.findInfo(current_id);
+    	model.addAttribute("currentInfo", account);
 
 	    return "attendance";
 	}
+	
 	@PostMapping("/attendance")
     public String attendancePost(@Validated @ModelAttribute AttendanceForm attendanceForm, BindingResult result, Model model) {
 	    System.out.println("attendancePostメソッドの開始");
 	   
 	    if (result.hasErrors()) {
-	    	return "attendance";
-	    }
-
-        Attendance attendance = new Attendance(attendanceForm.getWorkType(), attendanceForm.getWorkDate(), null, null, null, null, 0);
-//        boolean resultLogin = loginService.execute(login);
-        boolean resultLogin = true;
-       
-        if (resultLogin) { // ログイン成功時
-            // Modelにユーザー情報を追加
-//            model.addAttribute("userId", loginForm.getUserId());
-            return "generalMenu";
-        } else { // ログイン失敗時
-            model.addAttribute("errorMessage", "ユーザーIDまたはパスワードが間違っています。");
-            return "login";
+	    	System.out.println("erorr");
+            return "attendance"; // エラーがある場合、フォームに戻る
+            
         }
-    }
+        else {
+        	System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        	AttendanceInfo att = new AttendanceInfo(userSession.getEmployee_id(),attendanceForm.getWorkType(),attendanceForm.getWorkDate(),attendanceForm.getStartTimeHour(),attendanceForm.getStartTimeMinute(),attendanceForm.getEndTimeHour(),attendanceForm.getEndTimeMinute(),attendanceForm.getBreakTime());
+        	int RIP = attendance.AttendanceInfo(att);
+        	if(RIP > 0) {
+        		 return "attendance";
+        	}else {
+        		model.addAttribute("attendanceDate", attendanceForm.getWorkDate());
+        		
+        		return "complete";
+        	}        	 
+        }
+	}
 	
 }

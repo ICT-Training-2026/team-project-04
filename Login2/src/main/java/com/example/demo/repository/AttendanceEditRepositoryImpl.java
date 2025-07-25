@@ -1,8 +1,8 @@
 package com.example.demo.repository;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -54,12 +54,15 @@ public class AttendanceEditRepositoryImpl implements AttendanceEditRepository {
 	        // 必要に応じてStringに変換
 	        review.setAttendance_date(attendanceDate != null ? dateFormat.format(attendanceDate) : null);
 			//review.setAttendance_date((String)one.get("attendance_date"));
-	        LocalDateTime clockInTime = (LocalDateTime) one.get("clock_in_time");
-	        review.setClock_in_time(clockInTime != null ? clockInTime.toString(): null);
-	        //review.setClock_in_time((String)one.get("clock_in_time"));
-	        LocalDateTime clockOutTime = (LocalDateTime) one.get("clock_out_time");
-	        review.setClock_out_time(clockOutTime != null ? clockOutTime.toString(): null);
-	        //review.setClock_out_time((String)one.get("clock_out_time"));
+	        
+	        Time clockInTime = (Time) one.get("clock_in_time");
+	        System.out.println("clockInTime:" + clockInTime);
+	        review.setClock_in_time(clockInTime != null ? clockInTime.toString() : null);
+	        
+	        Time clockOutTime = (Time) one.get("clock_out_time");
+	        System.out.println("clockOutTime:" + clockOutTime);
+	        review.setClock_out_time(clockOutTime != null ? clockOutTime.toString() : null);
+
 			review.setActual_working_minutes((Integer)one.get("actual_working_minutes"));
 			review.setRest_minutes((Integer)one.get("rest_minutes"));
 			review.setAttendance_type_code((String)one.get("attendance_type_code"));

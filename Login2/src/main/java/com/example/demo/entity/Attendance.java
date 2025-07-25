@@ -16,6 +16,10 @@ public class Attendance {
 	private LocalTime startTimeHour;
 	private LocalTime startTimeMinute;
 	private LocalTime endTimeHour;
+	private String employee_id;
+    private String employee_name;
+    private String department_code;
+    private String department_name;
 	private LocalTime endTimeMinute;
 	private double breakTime;
 

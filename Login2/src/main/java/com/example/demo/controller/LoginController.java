@@ -67,6 +67,7 @@ import com.example.demo.entity.Account;
 import com.example.demo.entity.Login;
 import com.example.demo.form.LoginForm;
 import com.example.demo.service.LoginService;
+import com.example.demo.session.UserSession;
 
 import lombok.RequiredArgsConstructor;
 
@@ -75,6 +76,7 @@ import lombok.RequiredArgsConstructor;
 public class LoginController {
 
     private final LoginService loginService;
+    private final UserSession userSession; // 追加: UserSessionの注入
 
     @GetMapping("/login")
     public String login(@ModelAttribute LoginForm loginForm) {
@@ -102,6 +104,9 @@ public class LoginController {
         // ログイン処理の成否によって処理を分岐
         if (resultLogin) { // ログイン成功時
         	redirectAttributes.addFlashAttribute("employee_id", loginForm.getEmployee_id());
+        	
+        	userSession.setEmployee_id(loginForm.getEmployee_id());
+
         	if(account.getDepartment_code().equals("D001")) {
         		redirectAttributes.addFlashAttribute("departmentID", account.getDepartment_code());
         		return "redirect:/somuMenu";

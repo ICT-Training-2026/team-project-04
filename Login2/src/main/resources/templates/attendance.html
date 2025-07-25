@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>勤怠登録</title>
-	<link rel="stylesheet" th:href="@{/css/template.css}"/>
+	<title>勤怠登録画面</title>
+	<link rel="stylesheet" th:href="@{/css/template.css}" />
 	<link rel="stylesheet" th:href="@{/css/attendanceDisplay.css}" />
 </head>
 
@@ -42,81 +42,86 @@
 	</main>
 
 	<div class="container">
-		<h2 class="title">勤怠登録画面</h2>
 
-		<div class="form-layout">
-			<!-- 左侧：员工信息 -->
-			<div class="employee-info">
-				<div class="info-row">
-					<label>社員番号：</label>
-					<input type="text" name="employeeId" />
-				</div>
+			<!-- 現在ログイン中のユーザー情報 -->
+			<h1 th:text="${currentInfo.employee_id}"></h1>
 
-				<div class="info-row">
-					<label>社員名：</label>
-					<input type="text" name="employeeName" />
-				</div>
+			<h1 th:text="${currentInfo.employee_name}"></h1>
 
-				<div class="info-row">
-					<label>所属名：</label>
-					<input type="text" name="department" />
-				</div>
+			<h1 th:text="${currentInfo.department_code}"></h1>
 
-				<div class="info-row">
-					<label>所属コード：</label>
-					<input type="text" name="departmentCode" />
-				</div>
-			</div>
+			<h1 th:text="${currentInfo.department_name}"></h1>
 
-			<!-- 右侧：打卡表单 -->
+
+
+			<h2 class="title">勤怠登録画面</h2>
+
+
 			<div class="attendance-form">
-<!--				<div class="form-row">-->
-<!--					<label>勤務形態：</label>-->
-<!--					<input type="text" />-->
-<!--				</div>-->
-				<div class="form-row">
-			        <label>勤務形態：</label>
-			            <select>
-			                <option value="">選択してください</option>
-			                <option value="出勤">出勤</option>
-			                <option value="振出">振出</option>
-			                <option value="振休">振休</option>
-			                <option value="年休">年休</option>
-			                <option value="休日">休日</option>
-			                <option value="欠勤">欠勤</option>
-			            </select>
-			      </div>
+				<form th:action="@{/attendance}" th:object="${attendanceForm}" method="post">
+					<!--				<div class="form-row">-->
+					<!--					<label>勤務形態：</label>-->
+					<!--					<input type="text" />-->
+					<!--				</div>-->
+					<div class="form-row">
+						<label>勤務形態：</label>
+						<select th:field="*{workType}" id="workType" required>
+							<option value="">選択してください</option>
+							<option value="出勤">出勤</option>
+							<option value="振出">振出</option>
+							<option value="振休">振休</option>
+							<option value="年休">年休</option>
+							<option value="休日">休日</option>
+							<option value="欠勤">欠勤</option>
+						</select>
+					</div>
 
-				<div class="form-row">
-					<label>出勤日：</label>
-					<input type="date" />
-					<span class="calendar-icon"></span>
-				</div>
 
-				<div class="form-row">
-					<label>開始時間：</label>
-					<input type="text" class="time-input" />時
-					<input type="text" class="time-input" />分 ～
-				</div>
+					<!-- 出勤日 -->
+					<div class="form-row">
+						<label for="attendanceDate">出勤日：</label>
+						<input type="date" th:field="*{workDate}" id="workDate" required />
+						<span class="calendar-icon"></span>
+						<div th:if="${#fields.hasErrors('workDate')}" th:errors="*{workDate}" class="error-msg">
+						</div>
+					</div>
 
-				<div class="form-row">
-					<label>終了時間：</label>
-					～ <input type="text" class="time-input" />時
-					<input type="text" class="time-input" />分
-				</div>
+					<!-- 開始時間 -->
+					<div class="form-row">
+						<label for="startHour">開始時間：</label>
+						<input type="text" th:field="*{startTimeHour}" id="startTimeHour" class="time-input">時
+						<input type="text" th:field="*{startTimeMinute}" id="startTimeMinute" class="time-input">分 ～
+						<div th:if="${#fields.hasErrors('startTimeHour')}" th:errors="*{startTimeHour}" class="error-msg"></div>
+						<div th:if="${#fields.hasErrors('startTimeMinute')}" th:errors="*{startTimeMinute}" class="error-msg"></div>
+					</div>
 
-				<div class="form-row">
-					<label>休憩時間：</label>
-					<input type="text" class="short-input" /> h
-				</div>
+					<!-- 終了時間 -->
+					<div class="form-row">
+						<label for="endHour">終了時間：</label>
+						～
+						<input type="text" th:field="*{endTimeHour}" id="endTimeHour" class="time-input">時
+						<input type="text" th:field="*{endTimeMinute}" id="endTimeMinute" class="time-input">分
+						<div th:if="${#fields.hasErrors('endTimeHour')}" th:errors="*{endTimeHour}" class="error-msg"></div>
+						<div th:if="${#fields.hasErrors('endTimeMinute')}" th:errors="*{endTimeMinute}" class="error-msg"></div>
+					</div>
+
+					<!-- 休憩時間 -->
+					<div class="form-row">
+						<label for="breakTime">休憩時間：</label>
+						<input type="number" th:field="*{breakTime}" id="breakTime" class="short-input" step="0.5" min="0"
+							required /> h
+						<div th:if="${#fields.hasErrors('breakTime')}" th:errors="*{breakTime}" class="error-msg"></div>
+					</div>
+
+
+					<!-- フォーム送信ボタン -->
+					<div class="button-row">
+						<button type="button" class="back-button" onclick="window.location.href='/generalMenu'">戻る</button>
+						<button type="submit" class="submit-button">登録</button>
+					</div>
+				</form>
 			</div>
 		</div>
+	</body>
 
-		<div class="button-row">
-			<a href="/generalMenu"><button class="back-button">戻る</button></a>
-			<a href="/complete"><button class="submit-button">登録</button></a>
-		</div>
-	</div>
-</body>
-
-</html>
+	</html>
