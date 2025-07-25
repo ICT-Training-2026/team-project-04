@@ -36,11 +36,11 @@ public class somuManagementController {
 	}
 
 	
-	@GetMapping("/attendanceManagement")
-    public String attendanceManagement(@ModelAttribute LoginForm loginForm) {
-	    System.out.println("attendanceManagementメソッドの開始");
-	    return "attendanceManagement";
-	}
+//	@GetMapping("/attendanceManagement")
+//    public String attendanceManagement(@ModelAttribute LoginForm loginForm) {
+//	    System.out.println("attendanceManagementメソッドの開始");
+//	    return "attendanceManagement";
+//	}
 	
 	@GetMapping("/fileExport")
     public String fileExport(@ModelAttribute LoginForm loginForm) {

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http:thymeleaf.org"> 
+<head>
+  <meta charset="UTF-8">
+  <title>勤怠管理</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" th:href="@{/css/somu_template.css}"/>
+  <link rel="stylesheet" th:href="@{/css/att_mag.css}"/>
+</head>
+<body>
+    <header class="main-header">
+    <div class="logo-container">
+      <img src="c:\Users\250450853\Documents\logo.pic\titl_logo.png" width="170" height="50"/>
+    </div>
+    <nav class="nav-links">
+      <a href="#">勤怠登録</a>
+      <a href="#">勤怠管理</a>
+      <a href="#">ファイル</a>
+      <a href="#">新規登録</a>
+      <a href="#">申請</a>
+      <a href="#">ログアウト</a>
+    </nav>
+  </header>
+  <div class="container">
+    <h2 class="title">勤怠管理画面</h2>
+    <!-- メインフォーム: 社員番号を次のコントローラーに渡すために必要 -->
+    <form th:action="@{/findAttendance}" th:object="${findId}" method="post">
+      <div class="content">
+        <!-- 検索パネル -->
+        <div class="search-panel">
+          <div class="input-group">
+            <img src="c:\Users\250450853\Documents\logo.pic\名前.png" alt="名前">-->
+            <input type="text" id="kensaku_id" th:field="*{kensaku_id}" placeholder="社員番号" class="flex-grow">
+          </div>
+        </div>
+        <!-- ボタン -->
+        <div class="button-row">
+          <!-- 「戻る」ボタンはリンクとして機能させるため、type="button"に設定 -->
+          <a th:href="@{/somuMenu}">
+            <button type="button" class="back-btn">戻る</button>
+          </a>
+          <!-- 「検索」ボタンはフォームのsubmitボタンとして機能させる -->
+          <a th:href="@{/attendance}">
+		  <button type="submit" class="search-btn">検索</button>
+      	  </a>
+	  </div>
+      </div>
+    </form>
+  </div>
+<!--<div class="container">-->
+<!--  <h2 class="title">勤怠管理画面</h2>-->
+<!--  <form th:action="@{/att_mag}" th:object="${findId}" method="post">-->
+<!--  <div class="content">-->
+<!--     左側の検索 -->
+<!--    <form class="search-panel">-->
+<!--      <div class="input-group">-->
+<!--        <img src="c:\Users\250450853\Documents\logo.pic\名前.png" alt="名前">-->
+<!--        <input type="text" id="employee_id" th:field="*{employee_id}" placeholder="社員番号">-->
+<!--      </div>-->
+<!--    </form>-->
+<!--	   ボタン -->
+<!--	  <div class="button-row">-->
+<!--	    <a href="/somuMenu"><button class="back-btn">戻る</button></a>-->
+<!--	    <a href="/attendance"><button type="submit" class="search-btn">検索</button>-->
+<!--	  </div>-->
+<!--    </div>-->
+<!-- </div>-->
+</body>
+</html>
