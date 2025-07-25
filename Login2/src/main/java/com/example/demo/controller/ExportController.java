@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.demo.entity.Account;
+import com.example.demo.entity.Export;
 import com.example.demo.service.ExportService;
 import com.example.demo.session.UserSession;
 
@@ -31,8 +31,9 @@ public class ExportController {
 	        return;
 	    }
 	    // 固定のデータ
-	    List<Account> allEmployees = exportService.execute(userSession.getEmployee_id());
-	    List<Account> selected = allEmployees.stream()
+	    List<Export> allEmployees = exportService.execute(userSession.getEmployee_id());
+	    System.out.println(allEmployees);
+	    List<Export> selected = allEmployees.stream()
 	        .filter(emp -> empIds.contains(emp.getEmployee_id()))
 	        .toList();
 	    // レスポンス設定
@@ -44,11 +45,12 @@ public class ExportController {
 	    writer.write('\uFEFF');
 	    // CSV出力
 	    writer.write("社員番号,名前,所属\n");
-	    for (Account emp : selected) {
-	        writer.write(String.format("%s,%s,%s\n",
+	    for (Export emp : selected) {
+	        writer.write(String.format("%s,%s,%s,%s\n",
 	            emp.getEmployee_id(),
 	            emp.getEmployee_name(),
-	            emp.getDepartment_code()));
+	            emp.getDepartment_name(),
+	            emp.getActual_working_minutes()));
 	    }
 	    writer.flush();
 	    writer.close();

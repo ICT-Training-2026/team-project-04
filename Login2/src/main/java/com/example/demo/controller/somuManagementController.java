@@ -1,15 +1,26 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.demo.entity.Export;
 import com.example.demo.form.LoginForm;
+import com.example.demo.service.ExportService;
+import com.example.demo.session.UserSession;
+
+import lombok.RequiredArgsConstructor;
 
 @Controller
+@RequiredArgsConstructor // Lombokを使用してコンストラクタを自動生成
 public class somuManagementController {
+	private final UserSession userSession; // DIによる注入
+    private final ExportService exportService; // DIによる注入
+    
 	
 	String departmentID = "";
 	
@@ -43,8 +54,13 @@ public class somuManagementController {
 	}
 	
 	@GetMapping("/fileExport")
-    public String fileExport(@ModelAttribute LoginForm loginForm) {
+    public String fileExport(@ModelAttribute LoginForm loginForm,Model model) {
 	    System.out.println("fileメソッドの開始");
+	    List<Export> allEmployees = exportService.execute(userSession.getEmployee_id());
+	    System.out.println("コントローラー:::"+allEmployees);
+	    
+	    model.addAttribute("employees", allEmployees);
+	    
 	    return "fileExport";
 	}
 	

@@ -49,9 +49,14 @@ public class AttendanceRepositoryImpl implements AttendanceRepository {
 				+ " WHERE employee_id = ?;";
 		Integer remai = jdbcTemplate.queryForObject(sql2, Integer.class, attendanceInfo.getEmployee_id());
 		
+		String sql4 = "SELECT MAX(actual_working_minutes) "
+				+ " FROM attendance "
+				+ " WHERE employee_id = ?;";
+		Integer ac_work = attendanceInfo.getActual_working_minute() +jdbcTemplate.queryForObject(sql4, Integer.class, attendanceInfo.getEmployee_id());
+		
 		String sql3 = "INSERT INTO attendance (attendance_date,employee_id,attendance_type_code,clock_in_time,clock_out_time,rest_minutes,actual_working_minutes,used_paid_leave_days, remaining_paid_leave_days) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-	    int result = jdbcTemplate.update(sql3,attendanceInfo.getAttendance_date(), attendanceInfo.getEmployee_id(), attendanceInfo.getAttendance_type_code(), attendanceInfo.getClock_in_time(), attendanceInfo.getClock_out_time(), attendanceInfo.getRest_minute(),attendanceInfo.getActual_working_minute(),paid,remai);
+	    int result = jdbcTemplate.update(sql3,attendanceInfo.getAttendance_date(), attendanceInfo.getEmployee_id(), attendanceInfo.getAttendance_type_code(), attendanceInfo.getClock_in_time(), attendanceInfo.getClock_out_time(), attendanceInfo.getRest_minute(),ac_work,paid,remai);
     	
 		if(result > 0){
     	    System.out.println("データが正常に挿入されました。");

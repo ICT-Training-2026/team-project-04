@@ -19,23 +19,31 @@ public class ExportRepositoryImpl implements ExportRepository {
     
 	@Override
 	public List<Export> Exinfo(String userId) {
-		String sql = "SELECT e.employee_id,e.employee_name,d.department_name,MAX(a.actual_working_minutes) FROM employee AS e INNER JOIN department AS d on e.department_code = d.department_code INNER JOIN attendance AS a on e.employee_id = a.employee_id GROUP BY"
+		String sql = "SELECT e.employee_id,e.employee_name,d.department_name,MAX(a.actual_working_minutes) AS max_working_minutes FROM employee AS e INNER JOIN department AS d on e.department_code = d.department_code INNER JOIN attendance AS a on e.employee_id = a.employee_id GROUP BY"
 				+ "    e.employee_id, e.employee_name, d.department_name";
-    	List<Map<String, Object>> list = jdbcTemplate.queryForList(sql,userId);
+    	List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
 
         if (list.isEmpty()) {
             return null;
         }
-        
         List<Export> ex =new ArrayList<Export>();
-		for(Map<String,Object> result:list) {
-	        Export account = new Export();
-	        account.setEmployee_id((String) result.get("employee_id"));
-	        account.setEmployee_name((String) result.get("employee_name"));
-	        account.setDepartment_name((String) result.get("department_name"));
-	        account .setActual_working_minutes((int)result.get("actual_working_minutes"));
-	        ex.add(account);
-		}
+        for (Map<String, Object> result : list) {
+            Export account = new Export();
+            account.setEmployee_id((String) result.get("employee_id"));
+            account.setEmployee_name((String) result.get("employee_name"));
+            account.setDepartment_name((String) result.get("department_name"));
+
+            // Nullチェックとデフォルト値の設定
+            Integer actualWorkingMinutes = (Integer) result.get("max_working_minutes");
+            if (actualWorkingMinutes != null) {
+                account.setActual_working_minutes(actualWorkingMinutes);
+            } else {
+                account.setActual_working_minutes(0); // デフォルト値を設定
+            }
+
+            ex.add(account);
+        }
+		System.out.println("レポジトリー:::"+ex);
 		return ex;
 	}
 
