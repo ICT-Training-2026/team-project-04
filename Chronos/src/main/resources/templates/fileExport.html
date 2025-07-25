@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http:thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>ファイル出力</title>
+	<link rel="stylesheet" th:href="@{/css/somu_template.css}" />
+	<link rel="stylesheet" th:href="@{/css/fileExport.css}" />
+
+</head>
+
+<body>
+	<!-- ここにheaderが入る（外部CSSで既に完成済み） -->
+
+	<div class="container">
+		<h2 class="title">ファイル出力画面</h2>
+
+		<div class="table-wrapper">
+			<table>
+				<thead>
+					<tr>
+						<th>社員番号</th>
+						<th>名前</th>
+						<th>所属</th>
+						<th>選択</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>001</td>
+						<td>山田 太郎</td>
+						<td>営業部</td>
+						<td><input type="checkbox" /></td>
+					</tr>
+					<tr>
+						<td>002</td>
+						<td>佐藤 花子</td>
+						<td>開発部</td>
+						<td><input type="checkbox" /></td>
+					</tr>
+					<tr>
+						<td>003</td>
+						<td>鈴木 次郎</td>
+						<td>総務部</td>
+						<td><input type="checkbox" /></td>
+					</tr>
+					<tr>
+						<td>004</td>
+						<td>高橋 和也</td>
+						<td>人事部</td>
+						<td><input type="checkbox" /></td>
+					</tr>
+					<tr>
+						<td>005</td>
+						<td>田中 美咲</td>
+						<td>企画部</td>
+						<td><input type="checkbox" /></td>
+					</tr>
+					<!-- 必要に応じて追加 -->
+				</tbody>
+			</table>
+		</div>
+
+		<div class="button-container">
+			<div class="button-column">
+				<button onclick="selectAll()">全選択</button>
+				<a href="/somuMenu"><button class="back-button">戻る</button></a>
+			</div>
+			<div class="button-column">
+				<button onclick="clearAll()">全解除</button>
+				<button onclick="exportFile()">出力</button>
+			</div>
+		</div>
+
+
+		<script>
+			function selectAll() {
+				document.querySelectorAll('tbody input[type="checkbox"]').forEach(cb => cb.checked = true);
+			}
+
+			function clearAll() {
+				document.querySelectorAll('tbody input[type="checkbox"]').forEach(cb => cb.checked = false);
+			}
+
+			function exportFile() {
+				alert("ファイル出力処理を実行します");
+				// 実際の出力処理をここに書く
+			}
+		</script>
+</body>
+
+</html>

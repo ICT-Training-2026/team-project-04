@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>勤怠登録完了</title>
+	<link rel="stylesheet" th:href="@{/css/template.css}"/>
+	<link rel="stylesheet" th:href="@{/css/complete.css}"/>
+</head>
+
+<body>
+	<header class="main-header">
+		<div class="logo-container">
+			<img th:src="@{/picture/title_logo.png}" width="170" height="50" />
+		</div>
+		<nav class="nav-links">
+			<a href="/attendance">勤怠登録</a>
+			<a href="/attendanceEdit">実績確認・修正</a>
+			<a href="/login">ログアウト</a>
+		</nav>
+	</header>
+
+	<div class="success-container">
+		<div class="success-box">
+			<div class="check-mark">✔</div>
+			<p class="message-main">勤怠修正依頼が完了しました。</p>
+			<a href="/generalMenu"><button class="back-button">メニュー画面へ戻る</button></a>
+		</div>
+	</div>
+
+</body>
+
+</html>
