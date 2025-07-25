@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>勤怠実績確認修正</title>
+	<link rel="stylesheet" th:href="@{/css/template.css}"/>
+	<link rel="stylesheet" th:href="@{/css/oldAttendance.css}"/>
+</head>
+
+<body>
+	<header class="main-header">
+		<div class="logo-container">
+			<img th:src="@{/picture/title_logo.png}" width="170" height="50" />
+		</div>
+		<nav class="nav-links">
+			<a href="/attendance">勤怠登録</a>
+			<a href="/attendanceEdit">実績確認・修正</a>
+			<a href="/login">ログアウト</a>
+		</nav>
+	</header>
+
+	<div class="container">
+		<h2 class="title">勤怠実績確認・勤怠修正画面</h2>
+<!--		<p th:text="${employeeID}"></p>-->
+		<table>
+			<thead>
+				<tr>
+					<th>日時</th>
+					<th>始業時間</th>
+					<th>終業時間</th>
+					<th>実労働時間</th>
+					<th>休憩時間</th>
+					<th>勤務形態</th>
+					<th>修正依頼</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="edit : ${attendanceList}">
+					<td th:text="${edit.attendance_date}"></td>
+					<td th:text="${edit.clock_in_time}"></td>
+					<td th:text="${edit.clock_out_time}"></td>
+<!--					<td th:text="${#strings.substringAfter(edit.clock_in_time, 'T')}"></td>-->
+<!--					<td th:text="${#strings.substringAfter(edit.clock_out_time, 'T')}"></td>-->
+					<td th:text="${#numbers.formatInteger(edit.actual_working_minutes / 60, 2)} + ':' + ${#numbers.formatInteger(edit.actual_working_minutes % 60, 2)}"></td>
+					<td th:text="${#numbers.formatInteger(edit.rest_minutes / 60, 2)} + ':' + ${#numbers.formatInteger(edit.rest_minutes % 60, 2)}"></td>
+					<td th:if="${edit.attendance_type_code == 'A001'}">1.通常</td>
+					<td th:if="${edit.attendance_type_code == 'A002'}">2.振出</td>
+					<td th:if="${edit.attendance_type_code == 'A003'}">3.振休</td>
+					<td th:if="${edit.attendance_type_code == 'A004'}">4.年休</td>
+					<td th:if="${edit.attendance_type_code == 'A005'}">5.休日</td>
+					<td th:if="${edit.attendance_type_code == 'A006'}">6.欠勤</td>
+					<td><input type="checkbox"></td>
+	            </tr>
+			</tbody>
+		</table>
+
+		<div class="button-row">
+<!--			<a href="/generalMenu"><button class="back-button">戻る</button></a>-->
+			<form action="/toGeneralMenu" method="POST">
+				<input type="hidden" name="employeeID" th:value="${employeeID}" />
+<!--				<a href="/generalMenu"><button class="back-button">戻る</button></a>-->
+				<button class="back-button">戻る</button>
+			</form>	
+			<a href="/completeCorrection"><button class="submit-button">修正</button></a>
+		</div>
+	</div>
+
+</body>
+
+</html>

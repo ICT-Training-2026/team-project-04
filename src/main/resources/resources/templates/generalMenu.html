@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>メニュー</title>
+  <link rel="stylesheet" th:href="@{/css/template.css}"/>
+  <link rel="stylesheet" th:href="@{/css/generalMenu.css}"/>
+</head>
+<body>
+  <header class="main-header">
+    <div class="logo-container">
+      <img th:src="@{/picture/title_logo.png}" width="170" height="50"/>
+    </div>
+    <nav class="nav-links">
+      <a href="/attendance">勤怠登録</a>
+      <a href="/attendanceEdit">実績確認・修正</a>
+      <a href="/login">ログアウト</a>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <h1></h1>
+  </main>
+
+    <div class="menu-container">
+        <div class="menu-item">
+            <div class="icon-wrapper">
+                <a href="/attendance"><img th:src="@{/picture/clock.png}"/></a>
+            </div>
+            <p>勤怠登録</p>
+        </div>
+
+        <div class="menu-item">
+             <div class="icon-wrapper">
+				<a th:href="@{/attendanceEdit(employee_id=${employee_id})}"><img th:src="@{/picture/pocketbook.png}"/></a> 
+			</div>
+             <p>勤怠確認・修正</p>
+        </div>
+    </div>
+</body>
+</html>
