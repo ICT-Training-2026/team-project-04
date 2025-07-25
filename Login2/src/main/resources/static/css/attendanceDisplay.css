@@ -1,117 +1,106 @@
 @charset "UTF-8";
 
 .container {
-	max-width: 800px;
-	/* 关键：居中控制区域宽度 */
-	margin: 0 auto;
-	/* 居中显示 */
-	padding: 40px 20px;
-	background-color: #eee;
-	font-family: sans-serif;
-	box-shadow: none;
-	border-radius: 10px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: #eee;
+  border-radius: 10px;
+  font-family: sans-serif;
 }
 
 .title {
-	text-align: center;
-	font-size: 24px;
-	font-weight: bold;
-	margin-bottom: 30px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
 }
 
 .form-layout {
-	display: flex;
-	justify-content: space-between;
-	gap: 50px;
-	margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  gap: 80px; /* 左右间距 */
+
+input[type="text"],
+input[type="date"],
+select {
+  padding: 5px 10px;
+  font-size: 18px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  font-family: sans-serif;
+  width: 200px;
 }
 
 .employee-info {
-	display: flex;
-	flex-direction: column;
-	gap: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-.employee-info p {
-	font-size: 18px;
-	margin: 12px 0;
+label {
+  width: 110px;
+  font-weight: bold;
 }
 
-.info-row {
-	display: flex;
-	align-items: center;
-	gap: 10px;
-}
 
-.employee-info label {
-	width: 100px;
-	font-weight: bold;
-}
-
-.employee-info label,
-.attendance-form label {
-	font-size: 18px;
-	font-weight: bold;
-	width: 110px;
-	/* 宽度统一 */
-	display: inline-block;
-	gap: 15px;
+.attendance-form {
+  flex: 2;
 }
 
 .form-row {
-	display: flex;
-	align-items: center;
-	flex-wrap: nowrap;
-	gap: 8px;
-	font-size: 18px;
-	margin-bottom: 14px;
-
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  margin-bottom: 14px;
 }
 
-/* 所有输入框样式一致 */
 input[type="text"],
-input[type="date"] {
-	padding: 5px 10px;
-	font-size: 18px;
-	font-weight: normal;
-	border: 1px solid #aaa;
-	border-radius: 5px;
-	font-family: sans-serif;
+input[type="date"],
+select {
+  padding: 5px 10px;
+  font-size: 18px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  font-family: sans-serif;
 }
 
 .time-input {
-	width: 40px;
-	text-align: center;
+  width: 40px;
+  text-align: center;
 }
 
 .short-input {
-	width: 60px;
-	text-align: center;
-}
-
-.calendar-icon {
-	font-size: 20px;
+  width: 60px;
+  text-align: center;
 }
 
 .button-row {
-	display: flex;
-	justify-content: center;
-	gap: 40px;
-	margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
 }
 
 button {
-	background-color: #555;
-	color: white;
-	font-size: 16px;
-	padding: 10px 30px;
-	border: none;
-	border-radius: 10px;
-	box-shadow: 2px 2px 5px #888;
-	cursor: pointer;
-	transition: background-color 0.2s;
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px #888;
+  cursor: pointer;
 }
 
 button:hover {
-	background-color: #333;
+  background-color: #333;
+}
+
+.button-row {
+  justify-content: flex-start;
+  margin-top: 30px;
+  gap: 30px;
 }
