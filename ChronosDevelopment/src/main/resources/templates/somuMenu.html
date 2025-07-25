@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+	
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>管理者メニュー画面</title>
+	<link rel="stylesheet" th:href="@{/css/somu_template.css}" />
+	<link rel="stylesheet" th:href="@{/css/somuMenu.css}" />
+
+</head>
+
+<body>
+	<header class="main-header">
+		<div class="logo-container">
+			<img th:src="@{/picture/title_logo.png}" width="170" height="50" />
+		</div>
+		<nav class="nav-links">
+<!--			<a href="/attendance?departmentID=${departmentID}">勤怠登録</a>-->
+<!--			<a th:href="@{/attendance(departmentID=${departmentID})}">勤怠登録</a>-->
+			<a href="/toAttendance">勤怠登録</a>
+			<a href="/attendanceManagement">勤怠管理</a>
+			<a href="/fileExport">ファイル</a>
+			<a href="/userRegist">新規登録</a>
+			<a href="/applicationPermission">申請</a>
+			<a href="/login">ログアウト</a>
+		</nav>
+	</header>
+
+	<div class="menu-container">
+		<div class="menu-grid">
+			<div class="menu-item">
+				<a href="/toAttendance"><img th:src="@{/picture/clock.png}" /></a>
+				<p>勤怠登録</p>
+			</div>
+			<div class="menu-item">
+				<a href="/attendanceManagement"><img th:src="@{/picture/gear.png}" /></a>
+				<p>勤怠管理</p>
+			</div>
+			<div class="menu-item">
+				<a href="/fileExport"><img th:src="@{/picture/file.png}" /></a>
+				<p>ファイル</p>
+			</div>
+			<div class="menu-item">
+				<a href="/userRegist"><img th:src="@{/picture/pocketbook.png}" /></a>
+				<p>新規登録</p>
+			</div>
+			<div class="menu-item">
+				<a href="/applicationPermission"><img th:src="@{/picture/stamp.png}" /></a>
+				<p>申請</p>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+
+</html>
